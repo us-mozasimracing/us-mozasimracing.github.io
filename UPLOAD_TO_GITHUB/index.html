@@ -1,0 +1,2167 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOZA Racing US | Official Sim Racing &amp; Flight Simulation Gear</title>
+  <meta name="description" content="MOZA Racing delivers high-performance direct drive wheels, pedals, flight sticks, and FFB bases—engineered for immersive sim racing and flight simulation experiences.">
+  <link rel="shortcut icon" href="https://us.mozaracing.com/cdn/shop/files/MOZA-RACING-Site-Identity.webp?crop=center&height=32&v=1751278490&width=32" type="image/png">
+  
+  <!-- Google Fonts: Open Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'moza-gold': '#C9AF89',
+            'moza-gold-light': '#EBCDA2',
+            'moza-red': '#CC0901',
+            'moza-dark': '#111111',
+            'moza-topbar': '#F2F2F2',
+          },
+          fontFamily: {
+            sans: ['"Open Sans"', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    :root {
+      --color-gold: #C9AF89;
+      --color-gold-hover: #dfc39a;
+      --color-red: #CC0901;
+      --color-dark: #111111;
+      --color-topbar: #F2F2F2;
+      --topbar-height: 2.5rem;
+    }
+    
+    body {
+      background-color: #000000;
+      color: #FFFFFF;
+      font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #000000;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #262626;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #C9AF89;
+    }
+
+    /* Topbar Styles (Exact 1:1 to us.mozaracing.com) */
+    .topbar-wrapper {
+      background-color: #F2F2F2;
+      color: #111111;
+      height: 2.5rem;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .topbar-social-link {
+      color: #333333;
+      transition: color 0.15s ease, transform 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .topbar-social-link:hover {
+      color: #C9AF89;
+      transform: translateY(-1px);
+    }
+    .topbar-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      height: 100%;
+      padding: 0 0.5rem;
+      background: transparent;
+      border: none;
+      font-size: 0.8125rem;
+      color: #111111;
+      cursor: pointer;
+      transition: color 0.15s ease;
+    }
+    .topbar-btn:hover {
+      color: #C9AF89;
+    }
+
+    /* Buttons */
+    .btn-shop-pill {
+      background-color: #C9AF89;
+      color: #000000;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-shop-pill:hover {
+      background-color: #dfc39a;
+      box-shadow: 0 4px 12px rgba(201, 175, 137, 0.35);
+    }
+    
+    .btn-blur {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    
+    .btn-moza-primary {
+      background: #C9AF89;
+      color: #000000;
+      font-weight: 700;
+      transition: all 0.25s ease;
+    }
+    .btn-moza-primary:hover {
+      background: #FFFFFF;
+      color: #000000;
+      box-shadow: 0 4px 15px rgba(201, 175, 137, 0.4);
+    }
+    
+    .btn-moza-secondary {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      color: #FFFFFF;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    .btn-moza-secondary:hover {
+      background: rgba(255, 255, 255, 0.25);
+      border-color: #FFFFFF;
+      color: #FFFFFF;
+    }
+
+    /* Hotspot pulse animation */
+    @keyframes pulse-ring {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(201, 175, 137, 0.85); }
+      70% { transform: scale(1.05); box-shadow: 0 0 0 14px rgba(201, 175, 137, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(201, 175, 137, 0); }
+    }
+    .hotspot-pin {
+      animation: pulse-ring 2.2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+    }
+
+    /* Mega Menu */
+    .mega-menu-panel {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav-item:hover .mega-menu-panel {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    /* ========================================================================= */
+    /* YOUR SIMULATION JOURNEY STARTS HERE (EXACT 1:1 MATCH TO USER SCREENSHOT)  */
+    /* ========================================================================= */
+    .moza-journey-section {
+      background-color: #000000;
+      color: #FFFFFF;
+      width: 100%;
+      padding-top: clamp(48px, 6vw, 76px);
+      padding-bottom: clamp(56px, 7vw, 96px);
+      position: relative;
+    }
+    .moza-journey-title {
+      text-align: center;
+      color: #FFFFFF;
+      font-size: clamp(26px, 3.4vw, 42px);
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      margin: 0 auto clamp(32px, 4vw, 56px);
+      padding: 0 16px;
+    }
+    .moza-journey-panels {
+      display: flex;
+      flex-direction: row;
+      gap: clamp(16px, 1.8vw, 32px);
+      width: 94vw;
+      max-width: 1820px;
+      margin: 0 auto;
+      height: 44vw;
+      max-height: 540px;
+      min-height: 420px;
+    }
+    .moza-journey-panel {
+      position: relative;
+      flex: 1 1 0%;
+      min-width: 0;
+      border-radius: 28px;
+      overflow: hidden;
+      background: #0d0d0d;
+      cursor: pointer;
+      text-decoration: none;
+      color: #FFFFFF;
+      display: block;
+      box-shadow: 0 12px 36px rgba(0,0,0,0.65);
+      transition: flex-grow 0.65s cubic-bezier(0, 0, 0.2, 1), transform 0.35s ease;
+    }
+    .moza-journey-panels:hover .moza-journey-panel {
+      flex-grow: 0.95;
+    }
+    .moza-journey-panel:hover {
+      flex-grow: 1.25 !important;
+    }
+    .moza-journey-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.7s cubic-bezier(0, 0, 0.2, 1), opacity 0.5s ease;
+    }
+    .moza-journey-panel:hover .moza-journey-img {
+      transform: scale(1.06);
+    }
+    .moza-journey-video {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      pointer-events: none;
+    }
+    .moza-journey-panel.is-video-active .moza-journey-img {
+      opacity: 0;
+    }
+    .moza-journey-panel.is-video-active .moza-journey-video {
+      opacity: 1;
+    }
+    .moza-journey-shade {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0);
+      transition: background 0.5s ease;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .moza-journey-panels:hover .moza-journey-panel:not(:hover) .moza-journey-shade {
+      background: rgba(0,0,0,0.52);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+    }
+    .moza-journey-panel:hover .moza-journey-shade {
+      background: rgba(0,0,0,0);
+      backdrop-filter: blur(0px);
+      -webkit-backdrop-filter: blur(0px);
+    }
+    .moza-journey-accent {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: #C9AF89;
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.4s ease;
+      z-index: 4;
+    }
+    .moza-journey-panel:nth-child(2) .moza-journey-accent {
+      background: #6bc2fd;
+      left: auto;
+      right: 0;
+    }
+    .moza-journey-panel:hover .moza-journey-accent {
+      transform: scaleY(1);
+    }
+    .moza-journey-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      display: flex;
+      align-items: flex-end;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.92) 0%,
+        rgba(0, 0, 0, 0.55) 35%,
+        rgba(0, 0, 0, 0.15) 60%,
+        rgba(0, 0, 0, 0) 80%
+      );
+    }
+    .moza-journey-content {
+      padding: clamp(24px, 4vw, 48px);
+      width: 100%;
+      color: #FFFFFF;
+      transition: transform 0.5s ease, opacity 0.4s ease;
+    }
+    .moza-journey-panels:hover .moza-journey-panel:not(:hover) .moza-journey-content {
+      opacity: 0.35;
+      transform: translateY(10px);
+    }
+    .moza-journey-panel:hover .moza-journey-content {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .moza-journey-heading {
+      font-size: clamp(22px, 2.3vw, 32px);
+      font-weight: 700;
+      margin: 0 0 10px;
+      letter-spacing: -0.01em;
+      color: #FFFFFF !important;
+      line-height: 1.25;
+    }
+    .moza-journey-desc {
+      font-size: clamp(14px, 1.2vw, 16px);
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.84) !important;
+      margin: 0;
+      max-width: 520px;
+    }
+
+    @media (max-width: 768px) {
+      .moza-journey-panels {
+        flex-direction: column;
+        height: auto;
+        max-height: none;
+        min-height: 0;
+        gap: 20px;
+        width: 100%;
+        padding: 0 16px;
+      }
+      .moza-journey-panel {
+        flex: none;
+        width: 100%;
+        height: 380px;
+      }
+      .moza-journey-panels:hover .moza-journey-panel,
+      .moza-journey-panel:hover {
+        flex-grow: 0 !important;
+      }
+      .moza-journey-content {
+        padding: 24px;
+      }
+    }
+
+    /* Hotspot popup tooltip */
+    .hotspot-tooltip {
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.9) translateY(4px);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+    .hotspot-wrapper:hover .hotspot-tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1) translateY(0);
+      pointer-events: auto;
+    }
+  </style>
+</head>
+<body class="bg-black text-white antialiased selection:bg-[#C9AF89] selection:text-black">
+
+  <!-- ========================================================================= -->
+  <!-- 1. OFFICIAL US TOP SOCIALS & ANNOUNCEMENT BAR (EXACT 1:1 TO us.mozaracing.com) -->
+  <!-- ========================================================================= -->
+  <div id="topbar-announcement" class="topbar-wrapper relative z-50">
+    <div class="max-w-[1780px] mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
+      
+      <!-- Left: 7 Official Social Icons -->
+      <div class="hidden lg:flex items-center space-x-4">
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/MOZARacing" target="_blank" rel="noopener noreferrer" class="topbar-social-link" title="MOZA Racing US on Facebook">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M9.03153 23L9 13H5V9H9V6.5C9 2.7886 11.2983 1 14.6091 1C16.1951 1 17.5581 1.11807 17.9553 1.17085V5.04948L15.6591 5.05052C13.8584 5.05052 13.5098 5.90614 13.5098 7.16171V9H18.75L16.75 13H13.5098V23H9.03153Z"/>
+          </svg>
+          <span class="sr-only">Facebook</span>
+        </a>
+        <!-- X / Twitter -->
+        <a href="https://twitter.com/moza_racing" target="_blank" rel="noopener noreferrer" class="topbar-social-link" title="MOZA Racing US on X (Twitter)">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M13.8984 10.4679L21.3339 2H19.5687L13.1074 9.35221L7.95337 2H2L9.80183 13.1157L2 22H3.7652L10.5845 14.2315L16.03 22H21.9833M4.398 3.29892H7.10408L19.5687 20.7594H16.8626"/>
+          </svg>
+          <span class="sr-only">X (Twitter)</span>
+        </a>
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/moza_racing_official/" target="_blank" rel="noopener noreferrer" class="topbar-social-link" title="MOZA Racing US on Instagram">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2.98C14.94 2.98 15.28 2.99 16.44 3.04C17.14 3.04 17.83 3.18 18.48 3.42C18.96 3.6 19.39 3.88 19.75 4.24C20.12 4.59 20.4 5.03 20.57 5.51C20.81 6.16 20.94 6.85 20.95 7.55C21 8.71 21.01 9.06 21.01 12C21.01 14.94 21 15.28 20.95 16.44C20.95 17.14 20.81 17.83 20.57 18.48C20.39 18.95 20.11 19.39 19.75 19.75C19.39 20.11 18.96 20.39 18.48 20.57C17.83 20.81 17.14 20.94 16.44 20.95C15.28 21 14.93 21.01 12 21.01C9.07 21.01 8.72 21 7.55 20.95C6.85 20.95 6.16 20.81 5.51 20.57C5.03 20.39 4.6 20.11 4.24 19.75C3.87 19.4 3.59 18.96 3.42 18.48C3.18 17.83 3.05 17.14 3.04 16.44C2.99 15.28 2.98 14.93 2.98 12C2.98 9.07 2.99 8.72 3.04 7.55C3.04 6.85 3.18 6.16 3.42 5.51C3.6 5.03 3.88 4.6 4.24 4.24C4.59 3.87 5.03 3.59 5.51 3.42C6.16 3.18 6.85 3.05 7.55 3.04C8.71 2.99 9.06 2.98 12 2.98ZM12 1C9.01 1 8.64 1.01 7.47 1.07C6.56 1.09 5.65 1.26 4.8 1.58C4.07 1.86 3.4 2.3 2.85 2.85C2.3 3.41 1.86 4.07 1.58 4.8C1.26 5.65 1.09 6.56 1.07 7.47C1.02 8.64 1 9.01 1 12C1 14.99 1.01 15.36 1.07 16.53C1.09 17.44 1.26 18.35 1.58 19.2C1.86 19.93 2.3 20.6 2.85 21.15C3.41 21.7 4.07 22.14 4.8 22.42C5.65 22.74 6.56 22.91 7.47 22.93C8.64 22.98 9.01 23 12 23C14.99 23 15.36 22.99 16.53 22.93C17.44 22.91 18.35 22.74 19.2 22.42C19.93 22.14 20.6 21.7 21.15 21.15C21.7 20.59 22.14 19.93 22.42 19.2C22.74 18.35 22.91 17.44 22.93 16.53C22.98 15.36 23 14.99 23 12C23 9.01 22.99 8.64 22.93 7.47C22.91 6.56 22.74 5.65 22.42 4.8C22.14 4.07 21.7 3.4 21.15 2.85C20.59 2.3 19.93 1.86 19.2 1.58C18.35 1.26 17.44 1.09 16.53 1.07C15.36 1.02 14.99 1 12 1ZM12 6.35C10.88 6.35 9.79 6.68 8.86 7.3C7.93 7.92 7.21 8.8 6.78 9.84C6.35 10.87 6.24 12.01 6.46 13.1C6.68 14.2 7.22 15.2 8.01 15.99C8.8 16.78 9.81 17.32 10.9 17.54C12 17.76 13.13 17.65 14.16 17.22C15.19 16.79 16.07 16.07 16.7 15.14C17.32 14.21 17.65 13.12 17.65 12C17.65 10.5 17.05 9.06 16 8.01C14.94 6.95 13.5 6.36 12.01 6.36L12 6.35Z"/>
+          </svg>
+          <span class="sr-only">Instagram</span>
+        </a>
+        <!-- YouTube -->
+        <a href="https://www.youtube.com/channel/UCxTnjtk5irS374y2u-0syxw" target="_blank" rel="noopener noreferrer" class="topbar-social-link" title="MOZA Racing US on YouTube">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.8 7.6C23.8 7.6 23.6 5.9 22.8 5.2C21.9 4.2 20.9 4.2 20.4 4.2C17 4 12 4 12 4C12 4 7 4 3.6 4.2C3.1 4.3 2.1 4.3 1.2 5.2C0.5 5.9 0.2 7.6 0.2 7.6C0.2 7.6 0 9.5 0 11.5V13.3C0 15.2 0.2 17.2 0.2 17.2C0.2 17.2 0.4 18.9 1.2 19.6C2.1 20.6 3.3 20.5 3.8 20.6C5.7 20.8 12 20.8 12 20.8C12 20.8 17 20.8 20.4 20.5C20.9 20.4 21.9 20.4 22.8 19.5C23.5 18.8 23.8 17.1 23.8 17.1C23.8 17.1 24 15.2 24 13.2V11.4C24 9.5 23.8 7.6 23.8 7.6ZM9.5 15.5V8.8L16 12.2L9.5 15.5Z"/>
+          </svg>
+          <span class="sr-only">YouTube</span>
+        </a>
+        <!-- TikTok -->
+        <a href="https://www.tiktok.com/@moza_racing_global" target="_blank" rel="noopener noreferrer" class="topbar-social-link" title="MOZA Racing US on TikTok">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M10.6315 8.937V13.059C10.1123 12.9221 9.56911 12.9034 9.0418 13.0044C8.5145 13.1054 8.01657 13.3234 7.58473 13.6424C7.15288 13.9613 6.79813 14.3732 6.54661 14.8475C6.2951 15.3218 6.15324 15.8466 6.13148 16.383C6.10175 16.8449 6.17125 17.3078 6.33531 17.7405C6.49938 18.1733 6.7542 18.5659 7.08266 18.892C7.41111 19.2181 7.80557 19.4701 8.23952 19.631C8.67346 19.7919 9.13684 19.8581 9.59848 19.825C10.0648 19.8608 10.5333 19.7949 10.9717 19.6319C11.41 19.4689 11.8078 19.2126 12.1374 18.8809C12.4671 18.5491 12.7208 18.1498 12.881 17.7104C13.0413 17.271 13.1042 16.8021 13.0655 16.336V0H17.1425C17.8355 4.315 19.9935 5.316 22.8825 5.778V9.913C20.8804 9.74881 18.9491 9.09645 17.2575 8.013V16.18C17.2575 19.88 15.0675 24 9.63048 24C8.61045 23.9955 7.60156 23.7875 6.66297 23.3881C5.72437 22.9886 4.87496 22.4059 4.16451 21.6739C3.45407 20.942 2.89689 20.0755 2.52563 19.1254C2.15438 18.1754 1.97652 17.1607 2.00248 16.141C2.03479 15.0794 2.29174 14.0366 2.75639 13.0815C3.22105 12.1265 3.88285 11.2807 4.69819 10.6C5.51352 9.9193 6.46387 9.41915 7.48658 9.1325C8.50929 8.84586 9.58114 8.77923 10.6315 8.937Z"/>
+          </svg>
+          <span class="sr-only">TikTok</span>
+        </a>
+        <!-- Reddit -->
+        <a href="https://www.reddit.com/r/moza/" target="_blank" rel="noopener noreferrer" class="topbar-social-link" title="MOZA Racing US on Reddit">
+          <svg class="w-4 h-4" viewBox="0 0 30 30" fill="currentColor">
+            <path d="M 17.662109 2 C 15.565005 2 14 3.7131367 14 5.6621094 L 14 9.0351562 C 11.24971 9.1810926 8.7344872 9.9143634 6.7265625 11.064453 C 5.9527826 10.321405 4.9166871 9.991448 3.9121094 9.9921875 C 2.8229214 9.9929893 1.7094525 10.370413 0.94140625 11.234375 L 0.92382812 11.253906 L 0.90625 11.273438 C 0.16947928 12.194228 -0.12225605 13.427747 0.07421875 14.652344 C 0.25365009 15.770711 0.90137168 16.893419 2.0273438 17.628906 C 2.0199689 17.753058 2 17.874618 2 18 C 2 22.962 7.832 27 15 27 C 22.168 27 28 22.962 28 18 C 28 17.874618 27.980031 17.753058 27.972656 17.628906 C 29.098628 16.893419 29.74635 15.770711 29.925781 14.652344 C 30.122256 13.427747 29.830521 12.194228 29.09375 11.273438 L 29.076172 11.253906 L 29.058594 11.234375 C 28.290448 10.370294 27.177168 9.9929893 26.087891 9.9921875 C 25.08323 9.991448 24.046988 10.321133 23.273438 11.064453 C 21.265513 9.9143634 18.75029 9.1810926 16 9.0351562 L 16 5.6621094 C 16 4.6830821 16.565214 4 17.662109 4 C 18.182797 4 18.817104 4.2609042 19.810547 4.609375 C 20.650361 4.9039572 21.743308 5.2016984 23.140625 5.2910156 C 23.474875 6.2790874 24.402814 7 25.5 7 C 26.875 7 28 5.875 28 4.5 C 28 3.125 26.875 2 25.5 2 C 24.561213 2 23.747538 2.5304211 23.320312 3.3007812 C 22.125831 3.2346294 21.248238 2.9947078 20.472656 2.7226562 C 19.568849 2.4056271 18.738422 2 17.662109 2 z"/>
+          </svg>
+          <span class="sr-only">Reddit</span>
+        </a>
+        <!-- Discord -->
+        <a href="https://discord.com/invite/CCBgHxJAdX" target="_blank" rel="noopener noreferrer" class="topbar-social-link" title="MOZA Racing US on Discord">
+          <svg class="w-4 h-4" viewBox="0 0 30 30" fill="currentColor">
+            <path d="M25.12,6.946c-2.424-1.948-6.257-2.278-6.419-2.292c-0.256-0.022-0.499,0.123-0.604,0.357 c-0.004,0.008-0.218,0.629-0.425,1.228c2.817,0.493,4.731,1.587,4.833,1.647c0.478,0.278,0.638,0.891,0.359,1.368 C22.679,9.572,22.344,9.75,22,9.75c-0.171,0-0.343-0.043-0.501-0.135C21.471,9.598,18.663,8,15.002,8 C11.34,8,8.531,9.599,8.503,9.615C8.026,9.892,7.414,9.729,7.137,9.251C6.86,8.775,7.021,8.164,7.497,7.886 c0.102-0.06,2.023-1.158,4.848-1.65c-0.218-0.606-0.438-1.217-0.442-1.225c-0.105-0.235-0.348-0.383-0.604-0.357 c-0.162,0.013-3.995,0.343-6.451,2.318C3.564,8.158,1,15.092,1,21.087c0,0.106,0.027,0.209,0.08,0.301 c1.771,3.11,6.599,3.924,7.699,3.959c0.007,0.001,0.013,0.001,0.019,0.001c0.194,0,0.377-0.093,0.492-0.25l1.19-1.612 c-2.61-0.629-3.99-1.618-4.073-1.679c-0.444-0.327-0.54-0.953-0.213-1.398c0.326-0.443,0.95-0.541,1.394-0.216 C7.625,20.217,10.172,22,15,22c4.847,0,7.387-1.79,7.412-1.808c0.444-0.322,1.07-0.225,1.395,0.221 c0.324,0.444,0.23,1.066-0.212,1.392c-0.083,0.061-1.456,1.048-4.06,1.677l1.175,1.615c0.115,0.158,0.298,0.25,0.492,0.25 c0.007,0,0.013,0,0.019-0.001c1.101-0.035,5.929-0.849,7.699-3.959c0.053-0.092,0.08-0.195,0.08-0.301 C29,15.092,26.436,8.158,25.12,6.946z"/>
+          </svg>
+          <span class="sr-only">Discord</span>
+        </a>
+      </div>
+
+      <!-- Center: Award Announcement -->
+      <div class="flex items-center justify-center gap-2 text-xs font-normal text-gray-800 flex-1 text-center truncate px-2">
+        <svg class="w-3.5 h-3.5 text-gray-700 shrink-0 hidden sm:inline-block" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M4.66662 11L3.99996 14.6667C5.32123 14.4465 6.6563 14.1471 7.99996 14.1471C9.34362 14.1471 10.6787 14.4465 12 14.6667L11.3333 11M7.99996 12C5.05444 12 2.66663 9.61219 2.66663 6.66668C2.66663 3.72116 5.05444 1.33334 7.99996 1.33334C10.9455 1.33334 13.3333 3.72116 13.3333 6.66668C13.3333 9.61219 10.9455 12 7.99996 12Z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <p class="truncate leading-tight">
+          <span class="hidden md:inline">Find Your Complete Racing Setup — </span>
+          <a href="#explore" class="font-bold underline hover:text-[#C9AF89] transition-colors">Explore DriveCraft</a>
+        </p>
+      </div>
+
+      <!-- Right: Language & Currency Selectors -->
+      <div class="hidden lg:flex items-center space-x-2 text-xs">
+        <!-- Language Selector -->
+        <div class="relative group">
+          <button type="button" class="topbar-btn font-medium">
+            <svg class="w-3.5 h-3.5 stroke-1" viewBox="0 0 18 18" stroke="currentColor" fill="none">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.46661 13.6167L3.44161 13.025C3.53831 12.9654 3.61815 12.882 3.67358 12.7829C3.729 12.6837 3.75816 12.572 3.75828 12.4584L3.77495 9.45005C3.77628 9.32533 3.81392 9.20371 3.88328 9.10005L5.53328 6.50838C5.58279 6.43181 5.64731 6.36607 5.72293 6.31512C5.79855 6.26416 5.88371 6.22906 5.97327 6.21193C6.06283 6.1948 6.15493 6.19599 6.24402 6.21543C6.33311 6.23487 6.41733 6.27216 6.49161 6.32505L8.12495 7.50838C8.26587 7.60663 8.4374 7.65099 8.60828 7.63338L11.2333 7.27505C11.3925 7.25312 11.538 7.17296 11.6416 7.05005L13.4916 4.91672C13.6013 4.78667 13.6579 4.62 13.6499 4.45005L13.5583 2.42505"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.925 15.3083L13.025 14.4083C12.9418 14.3251 12.8384 14.2648 12.725 14.2333L10.9334 13.7666C10.776 13.7235 10.6399 13.6243 10.5508 13.4876C10.4617 13.3509 10.4259 13.1863 10.45 13.025L10.6417 11.675C10.6607 11.5614 10.7081 11.4545 10.7795 11.3642C10.8509 11.2739 10.944 11.203 11.05 11.1583L13.5834 10.1C13.701 10.0509 13.8303 10.0366 13.9558 10.0587C14.0814 10.0809 14.1979 10.1386 14.2917 10.225L16.3667 12.125"></path>
+            </svg>
+            <span>English</span>
+            <svg class="w-3 h-3 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+          <div class="absolute right-0 top-full hidden group-hover:block bg-white text-black border border-gray-200 shadow-xl rounded-md py-1 min-w-[140px] z-50">
+            <a href="javascript:void(0)" class="block px-3 py-1.5 text-xs hover:bg-gray-100 font-semibold text-[#C9AF89]">English (US)</a>
+            <a href="javascript:void(0)" class="block px-3 py-1.5 text-xs hover:bg-gray-100 text-gray-700">Deutsch</a>
+            <a href="javascript:void(0)" class="block px-3 py-1.5 text-xs hover:bg-gray-100 text-gray-700">Français</a>
+            <a href="javascript:void(0)" class="block px-3 py-1.5 text-xs hover:bg-gray-100 text-gray-700">Español</a>
+          </div>
+        </div>
+
+        <!-- Currency Selector -->
+        <div class="relative group">
+          <button type="button" class="topbar-btn font-medium">
+            <svg class="w-3.5 h-3.5 stroke-1" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M0.666687 2.66675V5.33341C0.666687 6.43808 2.45735 7.33341 4.66669 7.33341C6.87602 7.33341 8.66669 6.43808 8.66669 5.33341V2.66675"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.66669 4.66675C6.87583 4.66675 8.66669 3.77132 8.66669 2.66675C8.66669 1.56218 6.87583 0.666748 4.66669 0.666748C2.45755 0.666748 0.666687 1.56218 0.666687 2.66675C0.666687 3.77132 2.45755 4.66675 4.66669 4.66675Z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7.33337 8V10.6667C7.33337 11.7713 9.12404 12.6667 11.3334 12.6667C13.5427 12.6667 15.3334 11.7713 15.3334 10.6667V8"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11.3334 10C13.5425 10 15.3334 9.10457 15.3334 8C15.3334 6.89543 13.5425 6 11.3334 6C9.12424 6 7.33337 6.89543 7.33337 8C7.33337 9.10457 9.12424 10 11.3334 10Z"></path>
+            </svg>
+            <span>United States (USD $)</span>
+            <svg class="w-3 h-3 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+          <div class="absolute right-0 top-full hidden group-hover:block bg-white text-black border border-gray-200 shadow-xl rounded-md py-1 min-w-[200px] z-50">
+            <a href="javascript:void(0)" class="block px-3 py-1.5 text-xs hover:bg-gray-100 font-semibold text-[#C9AF89]">United States (USD $)</a>
+            <a href="javascript:void(0)" class="block px-3 py-1.5 text-xs hover:bg-gray-100 text-gray-700">Canada (CAD $)</a>
+            <a href="javascript:void(0)" class="block px-3 py-1.5 text-xs hover:bg-gray-100 text-gray-700">United Kingdom (GBP £)</a>
+            <a href="javascript:void(0)" class="block px-3 py-1.5 text-xs hover:bg-gray-100 text-gray-700">European Union (EUR €)</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 2. STICKY HEADER (EXACT 1:1 TO us.mozaracing.com) -->
+  <!-- ========================================================================= -->
+  <header class="sticky top-0 z-40 bg-[#111111] text-white border-b border-[#111111]">
+    <div class="max-w-[1780px] mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Left side controls: Shop pill button + Search + Mobile Drawer Toggle -->
+      <div class="flex items-center space-x-3 sm:space-x-4">
+        <!-- Tan "Shop" Pill Button with Authentic Shopping Bag Icon -->
+        <a href="#mustang-gtd-showcase" class="btn-shop-pill flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide shadow-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 23 26" fill="black" class="shrink-0">
+            <path d="M19.5345 25.6369H3.16782C1.41778 25.6363 -0.000659664 24.2005 2.30156e-07 22.43C2.30156e-07 22.3055 0.00725937 22.1813 0.0214471 22.0578L1.63621 8.17111C1.82428 6.55545 3.17871 5.33869 4.78687 5.34103H6.07631C6.07631 2.39111 8.43972 0 11.3555 0C14.2712 0 16.6346 2.39111 16.6346 5.34103H17.9241C19.5299 5.34203 20.8814 6.55778 21.0704 8.17111L22.6852 22.0578C22.8888 23.8163 21.6449 25.4089 19.9067 25.6152C19.7833 25.6299 19.6589 25.6369 19.5345 25.6369ZM4.78687 7.47744C4.25269 7.47811 3.80297 7.88203 3.73962 8.4188L2.11232 22.3041C2.04237 22.89 2.45481 23.4221 3.03387 23.4929C3.0761 23.4979 3.11866 23.5005 3.16122 23.5005H19.5352C20.1182 23.5009 20.5913 23.0228 20.5917 22.433C20.5917 22.3899 20.589 22.3469 20.5841 22.3041L18.9706 8.41746C18.9066 7.88036 18.4566 7.47644 17.9217 7.47611H16.6323V8.54565C16.6323 9.1355 16.1595 9.61385 15.5765 9.61385C14.9935 9.61385 14.5206 9.1355 14.5206 8.54565V7.47744H8.18566V8.54565C8.18566 9.1355 7.71285 9.61385 7.12983 9.61385C6.54681 9.61385 6.074 9.1355 6.074 8.54565V7.47744H4.78687ZM11.3512 2.13641C9.60278 2.13875 8.18599 3.57215 8.18368 5.34103H14.5187C14.5164 3.57215 13.0996 2.13875 11.3512 2.13641Z" />
+          </svg>
+          <span>Shop</span>
+        </a>
+
+        <!-- Search button -->
+        <button type="button" onclick="openSearchModal()" class="text-gray-300 hover:text-white transition-colors p-1" title="Search">
+          <svg class="w-5 h-5" viewBox="0 0 26 26" fill="currentColor">
+            <path d="M25.3333 25.3335C25.7382 24.9273 25.7382 24.27 25.3333 23.8637L17.8459 16.3793C19.3031 14.5909 20.0971 12.3537 20.0934 10.0468C20.0871 4.50082 15.5927 0.00634247 10.0467 0C4.50044 0.00634247 0.0060086 4.50082 0 10.0468C0.00634241 15.5928 4.50078 20.0873 10.0467 20.0936C12.3536 20.0972 14.5907 19.3032 16.3791 17.846L23.8665 25.3335C24.0608 25.5275 24.324 25.6366 24.5985 25.6369C24.8739 25.6373 25.1383 25.5281 25.3333 25.3335ZM18.0155 10.0468C18.0108 14.4451 14.4463 18.0096 10.048 18.0143C5.64909 18.0103 2.08398 14.4458 2.07931 10.0468C2.08398 5.64847 5.64842 2.084 10.0467 2.07933C14.4453 2.08334 18.0108 5.64781 18.0155 10.0468Z"/>
+          </svg>
+        </button>
+
+        <!-- Mobile Drawer Hamburger Icon -->
+        <button type="button" onclick="openMobileMenu()" class="lg:hidden text-gray-300 hover:text-white transition-colors p-1" title="Menu">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" d="M3 6H21M3 12H11M3 18H16"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Center: MOZA Racing Logo & Navigation Links -->
+      <div class="flex items-center space-x-8">
+        <a href="index.html" class="block py-2">
+          <img src="https://us.mozaracing.com/cdn/shop/files/MOZA_Racing_White.svg?v=1751278730&width=317" 
+               alt="MOZA Racing US" 
+               class="h-6 sm:h-7 w-auto object-contain">
+        </a>
+
+        <!-- Desktop Menu -->
+        <nav class="hidden lg:flex items-center space-x-6 text-[12px] font-semibold uppercase tracking-wider text-gray-200">
+          
+          <!-- CONFIGURATORS dropdown -->
+          <div class="relative nav-item py-4">
+            <a href="javascript:void(0)" class="hover:text-[#C9AF89] transition-colors flex items-center gap-1">
+              <span>CONFIGURATORS</span>
+              <svg class="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </a>
+            <div class="mega-menu-panel absolute top-full left-0 w-64 bg-[#141414] text-white border border-gray-800 rounded-lg shadow-2xl p-3 z-50">
+              <a href="#explore" class="block px-3 py-2 text-xs hover:text-[#C9AF89] hover:bg-black/30 rounded transition-colors font-medium">SIM RACING CONFIGURATOR</a>
+              <a href="#explore" class="block px-3 py-2 text-xs hover:text-[#C9AF89] hover:bg-black/30 rounded transition-colors font-medium">FLIGHT SIMULATOR CONFIGURATOR</a>
+            </div>
+          </div>
+
+          <a href="#mustang-gtd-showcase" class="hover:text-[#C9AF89] transition-colors py-4 text-[#C9AF89]">MUSTANG GTD</a>
+
+          <!-- RACING Mega Menu -->
+          <div class="relative nav-item py-4">
+            <a href="#journey" class="hover:text-[#C9AF89] transition-colors flex items-center gap-1">
+              <span>RACING</span>
+              <svg class="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </a>
+            
+            <div class="mega-menu-panel absolute top-full -left-20 w-[720px] bg-[#141414] text-white border border-gray-800 rounded-xl shadow-2xl p-6 grid grid-cols-3 gap-6 z-50">
+              <div>
+                <h4 class="text-[#C9AF89] text-[11px] font-bold tracking-widest uppercase mb-3 pb-1 border-b border-gray-800">Wheel Bases</h4>
+                <ul class="space-y-2 text-xs normal-case font-normal text-gray-300">
+                  <li><a href="r16-ultra.html" class="hover:text-[#C9AF89] block font-semibold text-white">MOZA R16 Ultra ($569.00 USD) &rarr;</a></li>
+                  <li><a href="r12-wheelbase.html" class="hover:text-[#C9AF89] block font-semibold text-white">MOZA R12 V2 ($499.00 USD) &rarr;</a></li>
+                  <li><a href="#explore" class="hover:text-[#C9AF89] block">MOZA R25 Ultra ($899.00 USD)</a></li>
+                  <li><a href="r21-ultra.html" class="hover:text-[#C9AF89] block font-semibold text-white">MOZA R21 Ultra (<span class="text-[#CC0901] font-bold">$489.99 USD</span> <span class="line-through text-gray-500 text-[11px]">$699.00</span>) &rarr;</a></li>
+                  <li><a href="#explore" class="hover:text-[#C9AF89] block">MOZA R9 V3 Direct Drive</a></li>
+                  <li><a href="#explore" class="hover:text-[#C9AF89] block">MOZA R3 Direct Drive for Xbox</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-[#C9AF89] text-[11px] font-bold tracking-widest uppercase mb-3 pb-1 border-b border-gray-800">Steering Wheels</h4>
+                <ul class="space-y-2 text-xs normal-case font-normal text-gray-300">
+                  <li><a href="#mustang-gtd-showcase" class="hover:text-[#C9AF89] block font-bold text-[#C9AF89]">Ford Mustang GTD Sim Wheel &rarr;</a></li>
+                  <li><a href="cs-pro-wheel.html" class="hover:text-[#C9AF89] block font-semibold text-white">MOZA CS Pro Wheel (<span class="text-[#CC0901] font-bold">$199.99 USD</span> <span class="line-through text-gray-500 text-[11px]">$279.00</span>) &rarr;</a></li>
+                  <li><a href="#explore" class="hover:text-[#C9AF89] block">MOZA FSR2 Formula Wheel ($649.00 USD)</a></li>
+                  <li><a href="#explore" class="hover:text-[#C9AF89] block">Porsche Mission R Steering Wheel</a></li>
+                  <li><a href="#explore" class="hover:text-[#C9AF89] block">Vision GS Steering Wheel</a></li>
+                  <li><a href="#explore" class="hover:text-[#C9AF89] block">KS Formula GT Wheel</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-[#C9AF89] text-[11px] font-bold tracking-widest uppercase mb-3 pb-1 border-b border-gray-800">Pedals &amp; Bundles</h4>
+                <ul class="space-y-2 text-xs normal-case font-normal text-gray-300">
+                  <li><a href="crp2-pedals.html" class="hover:text-[#C9AF89] block font-semibold text-white">MOZA CRP2 Pedals ($369.00 USD) &rarr;</a></li>
+                  <li><a href="srp2-pedals.html" class="hover:text-[#C9AF89] block">MOZA SRP Pedals ($179.00 USD)</a></li>
+                  <li><a href="mbooster-active-pedal.html" class="hover:text-[#C9AF89] block">mBooster Active Pedals</a></li>
+                  <li><a href="#explore" class="hover:text-[#C9AF89] block font-semibold text-[#CC0901]">MOZA R5 Bundle (Special $379.00 USD)</a></li>
+                  <li><a href="#explore" class="hover:text-[#C9AF89] block">MOZA TSW Truck Bundle</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FLIGHT -->
+          <div class="relative nav-item py-4">
+            <a href="#journey" class="hover:text-[#C9AF89] transition-colors flex items-center gap-1">
+              <span>FLIGHT</span>
+              <svg class="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </a>
+            
+            <div class="mega-menu-panel absolute top-full left-0 w-96 bg-[#141414] text-white border border-gray-800 rounded-xl shadow-2xl p-6 grid grid-cols-2 gap-6 z-50">
+              <div>
+                <h4 class="text-[#C9AF89] text-[11px] font-bold tracking-widest uppercase mb-3 pb-1 border-b border-gray-800">Flight Controls</h4>
+                <ul class="space-y-2 text-xs normal-case font-normal text-gray-300">
+                  <li><a href="#explore" class="hover:text-[#C9AF89] block">MOZA AY210 Yoke Base</a></li>
+                  <li><a href="#explore" class="hover:text-[#C9AF89] block">MOZA AB6 Base</a></li>
+                  <li><a href="#explore" class="hover:text-[#C9AF89] block">MA3F Sidestick</a></li>
+                  <li><a href="#explore" class="hover:text-[#C9AF89] block">MFY Flight Handle</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-[#C9AF89] text-[11px] font-bold tracking-widest uppercase mb-3 pb-1 border-b border-gray-800">Sim Motion</h4>
+                <ul class="space-y-2 text-xs normal-case font-normal text-gray-300">
+                  <li><a href="#explore" class="hover:text-[#C9AF89] block">HMA150 Motion Actuator</a></li>
+                  <li><a href="#explore" class="hover:text-[#C9AF89] block">FCS Farming Sim Gear</a></li>
+                  <li><a href="#compatibility" class="hover:text-[#C9AF89] block">MSFS 2024 Support</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <a href="#explore" class="hover:text-[#C9AF89] transition-colors py-4">EXPLORE</a>
+          <a href="#compatibility" class="hover:text-[#C9AF89] transition-colors py-4">SUPPORT</a>
+          <a href="#footer" class="hover:text-[#C9AF89] transition-colors py-4">ABOUT</a>
+        </nav>
+      </div>
+
+      <!-- Right: User Account & Cart Button -->
+      <div class="flex items-center space-x-4">
+        <!-- Account Login -->
+        <a href="javascript:void(0)" onclick="openLoginModal()" class="hidden sm:flex text-gray-300 hover:text-white transition-colors" title="Account">
+          <svg class="w-6 h-6" viewBox="0 0 26 26" fill="currentColor">
+            <path d="M0.146484 12.8185C0.146484 5.73894 5.88542 0 12.965 0C20.0445 0 25.7834 5.73894 25.7834 12.8185C25.7834 19.898 20.0445 25.6369 12.965 25.6369C5.88876 25.6289 0.154496 19.8947 0.146484 12.8185ZM12.965 23.6658C15.6438 23.6681 18.2279 22.6753 20.2161 20.8798C19.6596 20.4375 19.0254 20.1032 18.346 19.894C18.2035 19.8399 18.0439 19.7872 17.8503 19.7218L17.3433 19.5508C15.509 18.9313 14.6828 18.4312 14.3279 17.2605C14.2978 17.1643 14.2735 17.0663 14.2551 16.9671C14.1296 16.3503 14.1931 15.7099 14.4374 15.1298C14.6096 14.7251 14.8751 14.3668 15.2122 14.0843C15.6593 13.7223 16.016 13.261 16.2539 12.7372C16.4917 12.2133 16.6042 11.6412 16.5825 11.0663C16.6446 9.01032 15.0283 7.29318 12.9723 7.23109C12.97 7.23109 12.9673 7.23109 12.965 7.23075C10.9304 7.2668 9.31002 8.94556 9.34607 10.9802C9.34674 11.0089 9.34741 11.0376 9.34875 11.0666C9.3273 11.6323 9.4346 12.1954 9.66255 12.7135C9.8905 13.2316 10.2331 13.6912 10.6646 14.0576C10.9727 14.3095 11.2274 14.6203 11.4137 14.9719C11.7408 15.5923 11.8334 16.3097 11.6744 16.9928C11.6607 17.0686 11.641 17.1434 11.616 17.2165C11.3056 18.3701 10.5021 18.8645 8.74054 19.4667L8.15502 19.6647C7.92703 19.7414 7.74911 19.8072 7.5852 19.8656C6.90444 20.083 6.27087 20.4271 5.71785 20.8798C7.70497 22.6742 10.2875 23.667 12.965 23.6658Z"/>
+          </svg>
+        </a>
+
+        <!-- Cart Button with Counter -->
+        <button type="button" onclick="openCartDrawer()" class="relative text-gray-300 hover:text-white transition-colors p-1" title="Shopping Cart">
+          <svg class="w-6 h-6" viewBox="0 0 512 512" fill="none" stroke="currentColor" stroke-width="32">
+            <circle cx="176" cy="416" r="16" fill="currentColor"/>
+            <circle cx="400" cy="416" r="16" fill="currentColor"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M48 80h64l48 272h256"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M160 288h249.44a8 8 0 0 0 7.85-6.43l28.8-144a8 8 0 0 0-7.85-9.57H128"/>
+          </svg>
+          <span id="cart-badge" class="absolute -top-1 -right-1.5 bg-[#C9AF89] text-black text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- 3. HERO SLIDESHOW BANNER (SLIDE 1: MUSTANG GTD SIM RACING WHEEL) -->
+  <!-- ========================================================================= -->
+  <section class="relative bg-black w-full overflow-hidden select-none" id="hero-slider-section">
+    <!-- Slides Container -->
+    <div class="relative w-full aspect-[4/5] sm:aspect-[16/9] lg:aspect-[2.37/1] min-h-[520px] lg:min-h-[660px] max-h-[820px] overflow-hidden">
+      
+      <!-- Slide 1: MUSTANG GTD SIM RACING WHEEL -->
+      <div class="hero-slide absolute inset-0 w-full h-full transition-opacity duration-700 opacity-100 z-10" data-slide="0">
+        <picture>
+          <source media="(max-width: 767px)" srcset="https://us.mozaracing.com/cdn/shop/files/MUSTANG_GTD_SIM_RACING_WHEEL-homebanner_mobile.jpg?v=1792663560&width=800">
+          <img src="https://us.mozaracing.com/cdn/shop/files/MUSTANG_GTD_SIM_RACING_WHEEL-homebanner_PC.jpg?v=1792663548&width=3840" 
+               alt="Mustang GTD Sim Racing Wheel" 
+               class="w-full h-full object-cover object-center">
+        </picture>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex items-end pb-12 sm:pb-16 lg:pb-20 justify-center">
+          <div class="text-center px-4 max-w-4xl mx-auto">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-black/60 border border-[#C9AF89]/50 text-[#C9AF89] text-[11px] font-bold tracking-widest uppercase mb-3 backdrop-blur-md">
+              Officially Licensed Ford Sim Wheel
+            </div>
+            <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight uppercase mb-4 drop-shadow-md">
+              MUSTANG GTD SIM RACING WHEEL
+            </h1>
+            <p class="text-xs sm:text-sm text-gray-200 max-w-xl mx-auto mb-6 font-light hidden sm:block">
+              Engineered with authentic dry carbon fiber, integrated 2.99" HD digital display, and dual-mode toggles.
+            </p>
+            <div class="flex items-center justify-center gap-3 sm:gap-4">
+              <a href="#mustang-gtd-showcase" class="btn-moza-secondary btn-blur text-xs sm:text-sm uppercase tracking-wider px-6 py-2.5 rounded-full inline-flex items-center gap-2">
+                <span>Learn More</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </a>
+              <button onclick="addToCart('MOZA Mustang GTD Sim Racing Wheel', 279.00, 'https://cdn.shopify.com/s/files/1/0942/7134/0846/files/Mustang-GTD-PC-02.jpg')" class="btn-moza-primary btn-blur text-xs sm:text-sm uppercase tracking-wider px-6 py-2.5 rounded-full inline-flex items-center gap-2">
+                <span>Buy Now &bull; $279</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2: MOZA AIRBUS MA3F Sidestick -->
+      <div class="hero-slide absolute inset-0 w-full h-full transition-opacity duration-700 opacity-0 z-0 pointer-events-none" data-slide="1">
+        <picture>
+          <source media="(max-width: 767px)" srcset="https://us.mozaracing.com/cdn/shop/files/MOZA_Airbus_MA3F_Sidestick_homebanner_mobile.png?v=1792663635&width=800">
+          <img src="https://us.mozaracing.com/cdn/shop/files/MOZA_Airbus_MA3F_Sidestick_homebanner_pc.png?v=1792663617&width=3833" 
+               alt="MOZA Airbus MA3F Sidestick" 
+               class="w-full h-full object-cover object-center">
+        </picture>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex items-end pb-12 sm:pb-16 lg:pb-20 justify-center">
+          <div class="text-center px-4 max-w-4xl mx-auto">
+            <h2 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight uppercase mb-4 drop-shadow-md">
+              MOZA AIRBUS MA3F Sidestick
+            </h2>
+            <div class="flex items-center justify-center gap-3 sm:gap-4">
+              <a href="#explore" class="btn-moza-secondary btn-blur text-xs sm:text-sm uppercase tracking-wider px-6 py-2.5 rounded-full inline-flex items-center gap-2">
+                <span>Learn More</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </a>
+              <button onclick="addToCart('MOZA Airbus MA3F Sidestick', 349.00, 'https://us.mozaracing.com/cdn/shop/files/MOZA_Airbus_MA3F_Sidestick_homebanner_pc.png?v=1792663617&width=360')" class="btn-moza-primary btn-blur text-xs sm:text-sm uppercase tracking-wider px-6 py-2.5 rounded-full inline-flex items-center gap-2">
+                <span>Buy Now</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3: Meet the New MOZA R5 Pro Series -->
+      <div class="hero-slide absolute inset-0 w-full h-full transition-opacity duration-700 opacity-0 z-0 pointer-events-none" data-slide="2">
+        <picture>
+          <source media="(max-width: 767px)" srcset="https://us.mozaracing.com/cdn/shop/files/R5P-Mobile.png?v=1785245664&width=800">
+          <img src="https://us.mozaracing.com/cdn/shop/files/R5P-PC.png?v=1785245667&width=3840" 
+               alt="MOZA R5 Pro Series" 
+               class="w-full h-full object-cover object-center">
+        </picture>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex items-end pb-12 sm:pb-16 lg:pb-20 justify-center">
+          <div class="text-center px-4 max-w-4xl mx-auto">
+            <h2 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4 drop-shadow-md">
+              Meet the New MOZA <strong class="text-[#C9AF89]">R5 Pro</strong> Series
+            </h2>
+            <div class="flex items-center justify-center gap-3 sm:gap-4">
+              <a href="#explore" class="btn-moza-secondary btn-blur text-xs sm:text-sm uppercase tracking-wider px-6 py-2.5 rounded-full inline-flex items-center gap-2">
+                <span>R5 Pro Racing Simulator</span>
+              </a>
+              <a href="#explore" class="btn-moza-primary btn-blur text-xs sm:text-sm uppercase tracking-wider px-6 py-2.5 rounded-full inline-flex items-center gap-2">
+                <span>R5 Pro Truck Bundle</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4: MOZA R16 Ultra Direct Drive Base -->
+      <div class="hero-slide absolute inset-0 w-full h-full transition-opacity duration-700 opacity-0 z-0 pointer-events-none" data-slide="3">
+        <picture>
+          <source media="(max-width: 767px)" srcset="https://us.mozaracing.com/cdn/shop/files/R16U-Mobile.png?v=1785245666&width=800">
+          <img src="https://us.mozaracing.com/cdn/shop/files/R16U-PC.png?v=1785245669&width=3840" 
+               alt="MOZA R16 Ultra" 
+               class="w-full h-full object-cover object-center">
+        </picture>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex items-end pb-12 sm:pb-16 lg:pb-20 justify-center">
+          <div class="text-center px-4 max-w-4xl mx-auto">
+            <h2 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4 drop-shadow-md">
+              MOZA R16 Ultra Direct Drive Wheel Base
+            </h2>
+            <div class="flex items-center justify-center gap-3 sm:gap-4">
+              <a href="r16-ultra.html" class="btn-moza-secondary btn-blur text-xs sm:text-sm uppercase tracking-wider px-6 py-2.5 rounded-full inline-flex items-center gap-2">
+                <span>Learn More</span>
+              </a>
+              <a href="r16-ultra.html" class="btn-moza-primary btn-blur text-xs sm:text-sm uppercase tracking-wider px-6 py-2.5 rounded-full inline-flex items-center gap-2">
+                <span>Buy Now</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 5: HMA150 Motion Actuator -->
+      <div class="hero-slide absolute inset-0 w-full h-full transition-opacity duration-700 opacity-0 z-0 pointer-events-none" data-slide="4">
+        <picture>
+          <source media="(max-width: 767px)" srcset="https://us.mozaracing.com/cdn/shop/files/HMA150-Mobile.png?v=1785245664&width=800">
+          <img src="https://us.mozaracing.com/cdn/shop/files/HMA150-PC.png?v=1785245667&width=3840" 
+               alt="MOZA HMA150 Motion Actuator" 
+               class="w-full h-full object-cover object-center">
+        </picture>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex items-end pb-12 sm:pb-16 lg:pb-20 justify-center">
+          <div class="text-center px-4 max-w-4xl mx-auto">
+            <h2 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4 drop-shadow-md">
+              HMA150 Haptic Motion Actuator
+            </h2>
+            <div class="flex items-center justify-center gap-3 sm:gap-4">
+              <a href="#explore" class="btn-moza-primary btn-blur text-xs sm:text-sm uppercase tracking-wider px-6 py-2.5 rounded-full inline-flex items-center gap-2">
+                <span>Experience Full Motion</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Navigation Arrow Buttons -->
+    <button type="button" onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center transition-colors border border-white/20" aria-label="Previous Slide">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+    </button>
+    <button type="button" onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center transition-colors border border-white/20" aria-label="Next Slide">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </button>
+
+    <!-- Slide Indicators -->
+    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center space-x-2">
+      <button class="slide-dot w-6 h-2 rounded-full bg-[#C9AF89] transition-all" onclick="goToSlide(0)"></button>
+      <button class="slide-dot w-2 h-2 rounded-full bg-white/40 hover:bg-white transition-all" onclick="goToSlide(1)"></button>
+      <button class="slide-dot w-2 h-2 rounded-full bg-white/40 hover:bg-white transition-all" onclick="goToSlide(2)"></button>
+      <button class="slide-dot w-2 h-2 rounded-full bg-white/40 hover:bg-white transition-all" onclick="goToSlide(3)"></button>
+      <button class="slide-dot w-2 h-2 rounded-full bg-white/40 hover:bg-white transition-all" onclick="goToSlide(4)"></button>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 4. YOUR SIMULATION JOURNEY STARTS HERE (EXACT 1:1 REPLICATION OF SCREENSHOT) -->
+  <!-- ========================================================================= -->
+  <section id="journey" class="moza-journey-section">
+    <!-- Centered Clean White Title -->
+    <h2 class="moza-journey-title">
+      Your Simulation Journey Starts Here.
+    </h2>
+
+    <!-- Two Rounded Panels Side-by-Side (Exact 1:1) -->
+    <div class="moza-journey-panels">
+      
+      <!-- Tile 1: Ultimate Racing Experience (Lamborghini SCV12 Cockpit, Triple Monitors) -->
+      <a href="#explore" class="moza-journey-panel group" onmouseenter="playJourneyVideo(this)" onmouseleave="pauseJourneyVideo(this)">
+        <img class="moza-journey-img" 
+             src="https://us.mozaracing.com/cdn/shop/files/moza-ecosystem-racing.png?v=1786347497&width=1800" 
+             alt="Ultimate Racing Experience">
+        <video playsinline loop muted preload="none" class="moza-journey-video">
+          <source src="https://us.mozaracing.com/cdn/shop/videos/c/vp/a354dec2a4f141d7b9f5c0b9f1e5e771/a354dec2a4f141d7b9f5c0b9f1e5e771.SD-480p-1.5Mbps-91199745.mp4?v=0" type="video/mp4">
+        </video>
+        <div class="moza-journey-shade"></div>
+        <div class="moza-journey-accent"></div>
+        <div class="moza-journey-overlay">
+          <div class="moza-journey-content">
+            <h3 class="moza-journey-heading">Ultimate Racing Experience</h3>
+            <p class="moza-journey-desc">MOZA Racing delivers the most authentic driving experience.</p>
+          </div>
+        </div>
+      </a>
+
+      <!-- Tile 2: Peak Flight Simulation (Cockpit Avionics, Triple Screens, Yoke) -->
+      <a href="#explore" class="moza-journey-panel group" onmouseenter="playJourneyVideo(this)" onmouseleave="pauseJourneyVideo(this)">
+        <img class="moza-journey-img" 
+             src="https://us.mozaracing.com/cdn/shop/files/moza-ecosystem-flight.png?v=1786347497&width=1800" 
+             alt="Peak Flight Simulation">
+        <video playsinline loop muted preload="none" class="moza-journey-video">
+          <source src="https://us.mozaracing.com/cdn/shop/videos/c/vp/6118d683a0a74944b371b7d00df21cb1/6118d683a0a74944b371b7d00df21cb1.SD-480p-1.5Mbps-91199746.mp4?v=0" type="video/mp4">
+        </video>
+        <div class="moza-journey-shade"></div>
+        <div class="moza-journey-accent"></div>
+        <div class="moza-journey-overlay">
+          <div class="moza-journey-content">
+            <h3 class="moza-journey-heading">Peak Flight Simulation</h3>
+            <p class="moza-journey-desc">MOZA Flight offers the most realistic flight experience.</p>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 4. EXPLORE SIM COLLECTIONS (COLLAGE GRID WITH INTERACTIVE HOTSPOT PINS) -->
+  <!-- ========================================================================= -->
+  <section id="explore" class="bg-black text-white py-14 lg:py-20 border-t border-neutral-900">
+    <div class="max-w-[1780px] mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-10">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white mb-2">
+          Explore Sim Collections
+        </h2>
+        <p class="text-xs sm:text-sm text-gray-400">Click on any pulsating pin to discover complete sim rigs, steering wheels, and bases.</p>
+      </div>
+
+      <!-- Collage Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6">
+        
+        <!-- Large Card with Multiple Hotspot Pins (R5 Bundle + HGP Shifter + HBP Handbrake) -->
+        <div class="lg:col-span-6 relative rounded-2xl overflow-hidden group min-h-[380px] lg:min-h-[520px] bg-neutral-900 border border-neutral-800">
+          <img src="https://us.mozaracing.com/cdn/shop/files/MOZA_Racing_Setup.webp?v=1751278728&width=2000" 
+               alt="MOZA Racing Setup" 
+               class="w-full h-full object-cover">
+          
+          <!-- Hotspot Pin 1: R5 Bundle (32%, 38%) -->
+          <div class="hotspot-wrapper absolute z-20" style="left: 32%; top: 38%;">
+            <button type="button" class="hotspot-pin w-6 h-6 rounded-full bg-[#C9AF89] border-2 border-white flex items-center justify-center cursor-pointer shadow-lg hover:scale-110 transition-transform">
+              <span class="w-2 h-2 rounded-full bg-black"></span>
+            </button>
+            <!-- Tooltip -->
+            <div class="hotspot-tooltip absolute left-8 top-1/2 -translate-y-1/2 bg-black/95 text-white border border-gray-700 rounded-lg p-3 shadow-2xl w-48 text-left z-30">
+              <p class="text-xs font-bold text-white mb-0.5">MOZA R5 Bundle</p>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-xs font-bold text-[#CC0901]">$379.00 USD</span>
+                <span class="text-[10px] text-gray-500 line-through">$599.00</span>
+              </div>
+              <button onclick="addToCart('MOZA R5 Bundle', 379.00, 'https://us.mozaracing.com/cdn/shop/files/r5_racing_bundle_pc_0803.png?v=1785733065&width=360')" class="w-full text-center text-[10px] uppercase font-bold py-1 bg-[#C9AF89] hover:bg-white text-black rounded transition-colors">
+                Quick Add +
+              </button>
+            </div>
+          </div>
+
+          <!-- Hotspot Pin 2: HGP Shifter (63%, 70%) -->
+          <div class="hotspot-wrapper absolute z-20" style="left: 63%; top: 70%;">
+            <button type="button" class="hotspot-pin w-6 h-6 rounded-full bg-[#C9AF89] border-2 border-white flex items-center justify-center cursor-pointer shadow-lg hover:scale-110 transition-transform">
+              <span class="w-2 h-2 rounded-full bg-black"></span>
+            </button>
+            <!-- Tooltip -->
+            <div class="hotspot-tooltip absolute right-8 top-1/2 -translate-y-1/2 bg-black/95 text-white border border-gray-700 rounded-lg p-3 shadow-2xl w-48 text-left z-30">
+              <p class="text-xs font-bold text-white mb-0.5">MOZA HGP Shifter</p>
+              <p class="text-xs font-bold text-white mb-2">$149.00 USD</p>
+              <button onclick="addToCart('MOZA HGP Shifter', 149.00, 'https://us.mozaracing.com/cdn/shop/files/MOZA-HGP-Shifter-1-update_f0b2312d-685e-40d4-a483-2d63358141fc.webp?v=1752745275&width=360')" class="w-full text-center text-[10px] uppercase font-bold py-1 bg-[#C9AF89] hover:bg-white text-black rounded transition-colors">
+                Quick Add +
+              </button>
+            </div>
+          </div>
+
+          <!-- Hotspot Pin 3: HBP Handbrake (87%, 47%) -->
+          <div class="hotspot-wrapper absolute z-20" style="left: 87%; top: 47%;">
+            <button type="button" class="hotspot-pin w-6 h-6 rounded-full bg-[#C9AF89] border-2 border-white flex items-center justify-center cursor-pointer shadow-lg hover:scale-110 transition-transform">
+              <span class="w-2 h-2 rounded-full bg-black"></span>
+            </button>
+            <!-- Tooltip -->
+            <div class="hotspot-tooltip absolute right-8 top-1/2 -translate-y-1/2 bg-black/95 text-white border border-gray-700 rounded-lg p-3 shadow-2xl w-48 text-left z-30">
+              <p class="text-xs font-bold text-white mb-0.5">MOZA HBP Handbrake</p>
+              <p class="text-xs font-bold text-white mb-2">$99.00 USD</p>
+              <button onclick="addToCart('MOZA HBP Handbrake', 99.00, 'https://us.mozaracing.com/cdn/shop/files/MOZA-HBP-Handbrake-1.webp?v=1767606020&width=360')" class="w-full text-center text-[10px] uppercase font-bold py-1 bg-[#C9AF89] hover:bg-white text-black rounded transition-colors">
+                Quick Add +
+              </button>
+            </div>
+          </div>
+
+          <div class="absolute bottom-4 left-4 z-10">
+            <span class="bg-black/70 backdrop-blur-md text-[11px] font-semibold px-3 py-1.5 rounded-full text-white/90 border border-white/10">
+              Interactive Sim Cockpit
+            </span>
+          </div>
+        </div>
+
+        <!-- Right Side Cards (Pedals + FSR2 / R25 + Flight Yoke) -->
+        <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
+          
+          <!-- Card 2: CRP2 Load Cell Pedals -->
+          <div class="relative rounded-2xl overflow-hidden group min-h-[240px] bg-neutral-900 border border-neutral-800">
+            <img src="https://us.mozaracing.com/cdn/shop/files/Explore_Sim_Collections-Pedals-1.jpg?v=1752808711&width=1400" 
+                 alt="MOZA CRP2 Pedals" 
+                 class="w-full h-full object-cover">
+            <!-- Hotspot (48%, 23%) -->
+            <div class="hotspot-wrapper absolute z-20" style="left: 48%; top: 23%;">
+              <button type="button" class="hotspot-pin w-6 h-6 rounded-full bg-[#C9AF89] border-2 border-white flex items-center justify-center cursor-pointer shadow-lg hover:scale-110 transition-transform">
+                <span class="w-2 h-2 rounded-full bg-black"></span>
+              </button>
+              <div class="hotspot-tooltip absolute left-8 top-0 bg-black/95 text-white border border-gray-700 rounded-lg p-3 shadow-2xl w-48 text-left z-30">
+                <p class="text-xs font-bold text-white mb-0.5">MOZA CRP2 Pedals</p>
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="text-xs font-bold text-[#CC0901]">$369.00 USD</span>
+                  <span class="text-[10px] text-gray-500 line-through">$399.00</span>
+                </div>
+                <a href="crp2-pedals.html" class="block text-center text-[10px] uppercase font-bold py-1 bg-[#C9AF89] hover:bg-white text-black rounded transition-colors">
+                  View Product &rarr;
+                </a>
+              </div>
+            </div>
+            <div class="absolute bottom-3 left-3 z-10">
+              <span class="bg-black/70 backdrop-blur-md text-[10px] font-semibold px-2.5 py-1 rounded-full text-white/90 border border-white/10">
+                Load Cell Pedals
+              </span>
+            </div>
+          </div>
+
+          <!-- Card 3: R25 Ultra + FSR2 Wheel -->
+          <div class="relative rounded-2xl overflow-hidden group min-h-[240px] bg-neutral-900 border border-neutral-800">
+            <img src="https://us.mozaracing.com/cdn/shop/files/Homepage-R25-FSR2.png?v=1761816540&width=1234" 
+                 alt="R25 Ultra & FSR2 Wheel" 
+                 class="w-full h-full object-cover">
+            <!-- Hotspot Pin: FSR2 Formula (35%, 60%) -->
+            <div class="hotspot-wrapper absolute z-20" style="left: 35%; top: 60%;">
+              <button type="button" class="hotspot-pin w-6 h-6 rounded-full bg-[#C9AF89] border-2 border-white flex items-center justify-center cursor-pointer shadow-lg hover:scale-110 transition-transform">
+                <span class="w-2 h-2 rounded-full bg-black"></span>
+              </button>
+              <div class="hotspot-tooltip absolute left-8 top-0 bg-black/95 text-white border border-gray-700 rounded-lg p-3 shadow-2xl w-48 text-left z-30">
+                <p class="text-xs font-bold text-white mb-0.5">MOZA FSR2 Formula Wheel</p>
+                <p class="text-xs font-bold text-white mb-2">$649.00 USD</p>
+                <button onclick="addToCart('MOZA FSR2 Formula Wheel', 649.00, 'https://us.mozaracing.com/cdn/shop/files/FSR2_Formula_Wheel-1_d2271229-7744-41ba-bce0-5eb1de184ab0.webp?v=1752745274&width=360')" class="w-full text-center text-[10px] uppercase font-bold py-1 bg-[#C9AF89] hover:bg-white text-black rounded transition-colors">
+                  Quick Add +
+                </button>
+              </div>
+            </div>
+            <!-- Hotspot Pin: R25 Base (65%, 45%) -->
+            <div class="hotspot-wrapper absolute z-20" style="left: 65%; top: 45%;">
+              <button type="button" class="hotspot-pin w-6 h-6 rounded-full bg-[#C9AF89] border-2 border-white flex items-center justify-center cursor-pointer shadow-lg hover:scale-110 transition-transform">
+                <span class="w-2 h-2 rounded-full bg-black"></span>
+              </button>
+              <div class="hotspot-tooltip absolute right-8 top-0 bg-black/95 text-white border border-gray-700 rounded-lg p-3 shadow-2xl w-48 text-left z-30">
+                <p class="text-xs font-bold text-white mb-0.5">MOZA R25 Ultra (25 Nm)</p>
+                <p class="text-xs font-bold text-white mb-2">$899.00 USD</p>
+                <a href="r16-ultra.html" class="block text-center text-[10px] uppercase font-bold py-1 bg-[#C9AF89] hover:bg-white text-black rounded transition-colors">
+                  View Bases &rarr;
+                </a>
+              </div>
+            </div>
+            <div class="absolute bottom-3 left-3 z-10">
+              <span class="bg-black/70 backdrop-blur-md text-[10px] font-semibold px-2.5 py-1 rounded-full text-white/90 border border-white/10">
+                25 Nm Direct Drive
+              </span>
+            </div>
+          </div>
+
+          <!-- Card 4: Flight Simulation Yoke (Span 2) -->
+          <div class="sm:col-span-2 relative rounded-2xl overflow-hidden group min-h-[240px] bg-neutral-900 border border-neutral-800">
+            <img src="https://us.mozaracing.com/cdn/shop/files/MOZA_Yoke_base.jpg?v=1752721372&width=875" 
+                 alt="MOZA Flight Yoke Base" 
+                 class="w-full h-full object-cover">
+            <!-- Hotspot (42%, 55%) -->
+            <div class="hotspot-wrapper absolute z-20" style="left: 42%; top: 55%;">
+              <button type="button" class="hotspot-pin w-6 h-6 rounded-full bg-[#C9AF89] border-2 border-white flex items-center justify-center cursor-pointer shadow-lg hover:scale-110 transition-transform">
+                <span class="w-2 h-2 rounded-full bg-black"></span>
+              </button>
+              <div class="hotspot-tooltip absolute left-8 top-0 bg-black/95 text-white border border-gray-700 rounded-lg p-3 shadow-2xl w-52 text-left z-30">
+                <p class="text-xs font-bold text-white mb-0.5">MOZA AY210 Yoke Base</p>
+                <p class="text-xs font-bold text-white mb-2">$699.00 USD</p>
+                <button onclick="addToCart('MOZA AY210 Yoke Base', 699.00, 'https://us.mozaracing.com/cdn/shop/files/MOZA_Yoke_base.jpg?v=1752721372&width=360')" class="w-full text-center text-[10px] uppercase font-bold py-1 bg-[#C9AF89] hover:bg-white text-black rounded transition-colors">
+                  Quick Add +
+                </button>
+              </div>
+            </div>
+            <div class="absolute bottom-3 left-3 z-10">
+              <span class="bg-black/70 backdrop-blur-md text-[10px] font-semibold px-2.5 py-1 rounded-full text-white/90 border border-white/10">
+                Force Feedback Flight Yoke
+              </span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 5. MOZA SIM GEAR SETUPS (FEATURED COLLECTIONS TABBED CAROUSEL) -->
+  <!-- ========================================================================= -->
+  <section id="gear" class="bg-black text-white py-14 sm:py-20 border-t border-neutral-900">
+    <div class="max-w-[1780px] mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-8">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white mb-2 uppercase">
+          MOZA Sim Gear Setups
+        </h2>
+        <p class="text-xs sm:text-sm text-gray-400 max-w-xl mx-auto">
+          MOZA Racing Setups: Precision and Immersion, On Track and In Flight.
+        </p>
+      </div>
+
+      <!-- Tab Switcher (Exact MOZA Tabs) -->
+      <div class="flex items-center justify-center gap-3 mb-10">
+        <button id="gear-tab-racing-btn" 
+                type="button" 
+                onclick="switchGearTab('racing')" 
+                class="px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#C9AF89] text-black transition-all shadow-sm">
+          Racing Simulator
+        </button>
+        <button id="gear-tab-flight-btn" 
+                type="button" 
+                onclick="switchGearTab('flight')" 
+                class="px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-neutral-900 hover:bg-neutral-800 text-gray-300 hover:text-white transition-all border border-neutral-800">
+          Flight Simulator
+        </button>
+      </div>
+
+      <!-- Tab 1: RACING SIMULATOR CARDS -->
+      <div id="gear-panel-racing" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Card 1: R25 Ultra -->
+        <div class="bg-neutral-950 rounded-2xl border border-neutral-800 overflow-hidden flex flex-col justify-between group hover:border-[#C9AF89]/50 transition-all p-5">
+          <div>
+            <div class="relative aspect-square flex items-center justify-center mb-4 overflow-hidden rounded-xl bg-neutral-900/60 p-4">
+              <img src="https://us.mozaracing.com/cdn/shop/files/R25U-Z.png?v=1767606212&width=1000" alt="MOZA R25 Ultra" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3 p-4">
+                <a href="#explore" class="btn-moza-secondary text-[11px] uppercase font-bold px-3 py-1.5 rounded-full">Learn more</a>
+                <button onclick="addToCart('MOZA R25 Ultra Base', 899.00, 'https://us.mozaracing.com/cdn/shop/files/R25U-Z.png?v=1767606212&width=160')" class="btn-moza-primary text-[11px] uppercase font-bold px-3 py-1.5 rounded-full">Buy now</button>
+              </div>
+            </div>
+            <div class="flex items-baseline justify-between mb-3">
+              <h3 class="font-bold text-base text-white">R25 Ultra</h3>
+              <span class="font-bold text-sm text-gray-200">$899.00 USD</span>
+            </div>
+          </div>
+          <!-- Spec Badges -->
+          <div class="grid grid-cols-2 gap-2 pt-3 border-t border-neutral-800/80 text-[11px] text-gray-400">
+            <div class="flex items-center gap-1.5">
+              <img src="https://us.mozaracing.com/cdn/shop/files/Peak-Torque.png?v=1751278965" class="w-4 h-4 object-contain">
+              <span>25 Nm Sustained</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <img src="https://us.mozaracing.com/cdn/shop/files/Built_in_torque_sensor.png?v=1761892511" class="w-4 h-4 object-contain">
+              <span>Torque Sensor</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <img src="https://us.mozaracing.com/cdn/shop/files/FFB-Algorithm154x154.png?v=1762497693" class="w-4 h-4 object-contain">
+              <span>NexGen Force U1</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <img src="https://us.mozaracing.com/cdn/shop/files/Flat-wire_Motor.png?v=1761892317" class="w-4 h-4 object-contain">
+              <span>Flat-Wire Motor</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: R21 Ultra (30% OFF) -->
+        <div class="bg-neutral-950 rounded-2xl border border-neutral-800 overflow-hidden flex flex-col justify-between group hover:border-[#C9AF89]/50 transition-all p-5 relative">
+          <span class="absolute top-4 right-4 z-10 px-2 py-0.5 rounded text-[10px] font-bold bg-[#CC0901] text-white">SAVE 30%</span>
+          <div>
+            <div class="relative aspect-square flex items-center justify-center mb-4 overflow-hidden rounded-xl bg-neutral-900/60 p-4">
+              <img src="https://us.mozaracing.com/cdn/shop/files/R21U-Z.png?v=1755745886&width=1000" alt="MOZA R21 Ultra" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3 p-4">
+                <a href="r21-ultra.html" class="btn-moza-secondary text-[11px] uppercase font-bold px-3 py-1.5 rounded-full">Learn more</a>
+                <a href="r21-ultra.html" class="btn-moza-primary text-[11px] uppercase font-bold px-3 py-1.5 rounded-full">Buy now</a>
+              </div>
+            </div>
+            <div class="flex items-baseline justify-between mb-3">
+              <h3 class="font-bold text-base text-white">R21 Ultra</h3>
+              <div class="text-right">
+                <span class="font-bold text-sm text-[#CC0901]">$489.99 USD</span>
+                <span class="line-through text-gray-500 text-[10px] ml-1">$699.00</span>
+              </div>
+            </div>
+          </div>
+          <!-- Spec Badges -->
+          <div class="grid grid-cols-2 gap-2 pt-3 border-t border-neutral-800/80 text-[11px] text-gray-400">
+            <div class="flex items-center gap-1.5">
+              <img src="https://us.mozaracing.com/cdn/shop/files/Peak-Torque.png?v=1751278965" class="w-4 h-4 object-contain">
+              <span>21 Nm Sustained</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <img src="https://us.mozaracing.com/cdn/shop/files/Encoder-Resolution.png?v=1751275918" class="w-4 h-4 object-contain">
+              <span>21-Bit Encoder</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <img src="https://us.mozaracing.com/cdn/shop/files/FFB-Algorithm154x154.png?v=1762497693" class="w-4 h-4 object-contain">
+              <span>NexGen Force U1</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <img src="https://us.mozaracing.com/cdn/shop/files/Flat-wire_Motor.png?v=1761892317" class="w-4 h-4 object-contain">
+              <span>Flat-Wire Motor</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: R16 Ultra -->
+        <div class="bg-neutral-950 rounded-2xl border border-neutral-800 overflow-hidden flex flex-col justify-between group hover:border-[#C9AF89]/50 transition-all p-5">
+          <div>
+            <div class="relative aspect-square flex items-center justify-center mb-4 overflow-hidden rounded-xl bg-neutral-900/60 p-4">
+              <img src="https://us.mozaracing.com/cdn/shop/files/R16Ultra-1.png?v=1785207972&width=1000" alt="MOZA R16 Ultra" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3 p-4">
+                <a href="r16-ultra.html" class="btn-moza-secondary text-[11px] uppercase font-bold px-3 py-1.5 rounded-full">Learn more</a>
+                <a href="r16-ultra.html" class="btn-moza-primary text-[11px] uppercase font-bold px-3 py-1.5 rounded-full">Buy now</a>
+              </div>
+            </div>
+            <div class="flex items-baseline justify-between mb-3">
+              <h3 class="font-bold text-base text-white">R16 Ultra</h3>
+              <span class="font-bold text-sm text-gray-200">$529.00 USD</span>
+            </div>
+          </div>
+          <!-- Spec Badges -->
+          <div class="grid grid-cols-2 gap-2 pt-3 border-t border-neutral-800/80 text-[11px] text-gray-400">
+            <div class="flex items-center gap-1.5">
+              <img src="https://us.mozaracing.com/cdn/shop/files/Peak-Torque.png?v=1751278965" class="w-4 h-4 object-contain">
+              <span>16 Nm Peak</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <img src="https://us.mozaracing.com/cdn/shop/files/FFB-Algorithm154x154.png?v=1762497693" class="w-4 h-4 object-contain">
+              <span>NexGen Force U1</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <img src="https://us.mozaracing.com/cdn/shop/files/Flat-wire_Motor.png?v=1761892317" class="w-4 h-4 object-contain">
+              <span>Flat-Wire Motor</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <img src="https://us.mozaracing.com/cdn/shop/files/Built_in_torque_sensor.png?v=1761892511" class="w-4 h-4 object-contain">
+              <span>RGB Light Strip</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: R12 V2 -->
+        <div class="bg-neutral-950 rounded-2xl border border-neutral-800 overflow-hidden flex flex-col justify-between group hover:border-[#C9AF89]/50 transition-all p-5 relative">
+          <span class="absolute top-4 right-4 z-10 px-2 py-0.5 rounded text-[10px] font-bold bg-[#CC0901] text-white">SAVE 15%</span>
+          <div>
+            <div class="relative aspect-square flex items-center justify-center mb-4 overflow-hidden rounded-xl bg-neutral-900/60 p-4">
+              <img src="https://us.mozaracing.com/cdn/shop/files/R12_V2-1.webp?v=1767606148&width=1000" alt="MOZA R12 V2" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3 p-4">
+                <a href="r12-wheelbase.html" class="btn-moza-secondary text-[11px] uppercase font-bold px-3 py-1.5 rounded-full">Learn more</a>
+                <a href="r12-wheelbase.html" class="btn-moza-primary text-[11px] uppercase font-bold px-3 py-1.5 rounded-full">Buy now</a>
+              </div>
+            </div>
+            <div class="flex items-baseline justify-between mb-3">
+              <h3 class="font-bold text-base text-white">R12 V2</h3>
+              <div class="text-right">
+                <span class="font-bold text-sm text-[#CC0901]">$399.00 USD</span>
+                <span class="line-through text-gray-500 text-[10px] ml-1">$469.00</span>
+              </div>
+            </div>
+          </div>
+          <!-- Spec Badges -->
+          <div class="grid grid-cols-2 gap-2 pt-3 border-t border-neutral-800/80 text-[11px] text-gray-400">
+            <div class="flex items-center gap-1.5">
+              <img src="https://us.mozaracing.com/cdn/shop/files/Peak-Torque.png?v=1751278965" class="w-4 h-4 object-contain">
+              <span>12 Nm Peak</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <img src="https://us.mozaracing.com/cdn/shop/files/Encoder-Resolution.png?v=1751275918" class="w-4 h-4 object-contain">
+              <span>21-Bit Encoder</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <img src="https://us.mozaracing.com/cdn/shop/files/FFB-Algorithm154x154.png?v=1762497693" class="w-4 h-4 object-contain">
+              <span>NexGen 5.0</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <img src="https://us.mozaracing.com/cdn/shop/files/Flat-wire_Motor.png?v=1761892317" class="w-4 h-4 object-contain">
+              <span>Aviation Alloy</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5: CS Pro Wheel (30% OFF - $199.99) -->
+        <div class="bg-neutral-950 rounded-2xl border border-neutral-800 overflow-hidden flex flex-col justify-between group hover:border-[#C9AF89]/50 transition-all p-5 relative">
+          <span class="absolute top-4 right-4 z-10 px-2 py-0.5 rounded text-[10px] font-bold bg-[#CC0901] text-white">SAVE 28%</span>
+          <div>
+            <div class="relative aspect-square flex items-center justify-center mb-4 overflow-hidden rounded-xl bg-neutral-900/60 p-4">
+              <img src="https://us.mozaracing.com/cdn/shop/files/moza-cs-pro-steering-wheel-front.jpg?v=1767606212&width=1000" alt="MOZA CS Pro Wheel" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3 p-4">
+                <a href="cs-pro-wheel.html" class="btn-moza-secondary text-[11px] uppercase font-bold px-3 py-1.5 rounded-full">Learn more</a>
+                <a href="cs-pro-wheel.html" class="btn-moza-primary text-[11px] uppercase font-bold px-3 py-1.5 rounded-full">Buy now</a>
+              </div>
+            </div>
+            <div class="flex items-baseline justify-between mb-3">
+              <h3 class="font-bold text-base text-white">CS Pro Wheel</h3>
+              <div class="text-right">
+                <span class="font-bold text-sm text-[#CC0901]">$199.99 USD</span>
+                <span class="line-through text-gray-500 text-[10px] ml-1">$279.00</span>
+              </div>
+            </div>
+          </div>
+          <!-- Spec Badges -->
+          <div class="grid grid-cols-2 gap-2 pt-3 border-t border-neutral-800/80 text-[11px] text-gray-400">
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-[#C9AF89] shrink-0"></span>
+              <span>325 mm Round Rim</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-[#CC0901] shrink-0"></span>
+              <span>2.99" HD Display</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-blue-500 shrink-0"></span>
+              <span>Carbon Fiber</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-green-500 shrink-0"></span>
+              <span>Hall Dual Clutch</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6: mBooster Active Pedal -->
+        <div class="bg-neutral-950 rounded-2xl border border-neutral-800 overflow-hidden flex flex-col justify-between group hover:border-[#C9AF89]/50 transition-all p-5">
+          <div>
+            <div class="relative aspect-square flex items-center justify-center mb-4 overflow-hidden rounded-xl bg-neutral-900/60 p-4">
+              <img src="https://us.mozaracing.com/cdn/shop/files/MOZA_mBooster_Active_Pedal_-_1_1007.png?v=1759992399&width=1000" alt="MOZA mBooster Active Pedal" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3 p-4">
+                <a href="mbooster-active-pedal.html" class="btn-moza-secondary text-[11px] uppercase font-bold px-3 py-1.5 rounded-full">Learn more</a>
+                <a href="mbooster-active-pedal.html" class="btn-moza-primary text-[11px] uppercase font-bold px-3 py-1.5 rounded-full">Buy now</a>
+              </div>
+            </div>
+            <div class="flex items-baseline justify-between mb-3">
+              <h3 class="font-bold text-base text-white">mBooster Active Pedal</h3>
+              <span class="font-bold text-sm text-gray-200">$529.99 USD</span>
+            </div>
+          </div>
+          <!-- Spec Badges -->
+          <div class="grid grid-cols-2 gap-2 pt-3 border-t border-neutral-800/80 text-[11px] text-gray-400">
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-[#C9AF89] shrink-0"></span>
+              <span>Active FFB Motor</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-purple-500 shrink-0"></span>
+              <span>Dual 200kg Sensor</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-blue-500 shrink-0"></span>
+              <span>ABS Pulsation</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-green-500 shrink-0"></span>
+              <span>15-Bit Optical</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 7: CRP2 Load Cell Pedals -->
+        <div class="bg-neutral-950 rounded-2xl border border-neutral-800 overflow-hidden flex flex-col justify-between group hover:border-[#C9AF89]/50 transition-all p-5">
+          <div>
+            <div class="relative aspect-square flex items-center justify-center mb-4 overflow-hidden rounded-xl bg-neutral-900/60 p-4">
+              <img src="https://us.mozaracing.com/cdn/shop/files/MOZA_CRP2_Load_Cell_Pedals.webp?v=1767606090&width=1000" alt="MOZA CRP2 Pedals" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3 p-4">
+                <a href="crp2-pedals.html" class="btn-moza-secondary text-[11px] uppercase font-bold px-3 py-1.5 rounded-full">Learn more</a>
+                <a href="crp2-pedals.html" class="btn-moza-primary text-[11px] uppercase font-bold px-3 py-1.5 rounded-full">Buy now</a>
+              </div>
+            </div>
+            <div class="flex items-baseline justify-between mb-3">
+              <h3 class="font-bold text-base text-white">CRP2 Load Cell Pedals</h3>
+              <div class="text-right">
+                <span class="font-bold text-sm text-[#CC0901]">$369.00 USD</span>
+                <span class="line-through text-gray-500 text-[10px] ml-1">$399.00</span>
+              </div>
+            </div>
+          </div>
+          <!-- Spec Badges -->
+          <div class="grid grid-cols-2 gap-2 pt-3 border-t border-neutral-800/80 text-[11px] text-gray-400">
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-[#C9AF89] shrink-0"></span>
+              <span>200kg Load Cell</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-blue-500 shrink-0"></span>
+              <span>CNC Aluminum</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-green-500 shrink-0"></span>
+              <span>15-Bit Sensor</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-gray-500 shrink-0"></span>
+              <span>Quick Damping Kit</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 8: Ford Mustang GTD Sim Wheel -->
+        <div class="bg-neutral-950 rounded-2xl border border-neutral-800 overflow-hidden flex flex-col justify-between group hover:border-[#C9AF89]/50 transition-all p-5 relative">
+          <span class="absolute top-4 right-4 z-10 px-2 py-0.5 rounded text-[10px] font-bold bg-[#002C6C] text-white">OFFICIAL FORD</span>
+          <div>
+            <div class="relative aspect-square flex items-center justify-center mb-4 overflow-hidden rounded-xl bg-neutral-900/60 p-4">
+              <img src="https://cdn.shopify.com/s/files/1/0942/7134/0846/files/Mustang-GTD-PC-02.jpg" alt="Mustang GTD Sim Wheel" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3 p-4">
+                <button onclick="addToCart('MOZA Mustang GTD Sim Racing Wheel', 279.00, 'https://cdn.shopify.com/s/files/1/0942/7134/0846/files/Mustang-GTD-PC-02.jpg')" class="btn-moza-primary text-[11px] uppercase font-bold px-3 py-1.5 rounded-full">Pre-Order</button>
+              </div>
+            </div>
+            <div class="flex items-baseline justify-between mb-3">
+              <h3 class="font-bold text-base text-white">Mustang GTD Sim Wheel</h3>
+              <span class="font-bold text-sm text-[#C9AF89]">$279.00 USD</span>
+            </div>
+          </div>
+          <!-- Spec Badges -->
+          <div class="grid grid-cols-2 gap-2 pt-3 border-t border-neutral-800/80 text-[11px] text-gray-400">
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-[#002C6C] shrink-0"></span>
+              <span>330 mm GTD Form</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-[#CC0901] shrink-0"></span>
+              <span>2.99" HD Display</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-[#C9AF89] shrink-0"></span>
+              <span>Dual-Mode Toggles</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-blue-500 shrink-0"></span>
+              <span>Dry Carbon Fiber</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Tab 2: FLIGHT SIMULATOR CARDS (Initially Hidden) -->
+      <div id="gear-panel-flight" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 hidden">
+        
+        <!-- Flight 1: AY210 Yoke Base -->
+        <div class="bg-neutral-950 rounded-2xl border border-neutral-800 overflow-hidden flex flex-col justify-between group hover:border-[#6bc2fd]/50 transition-all p-5">
+          <div>
+            <div class="relative aspect-square flex items-center justify-center mb-4 overflow-hidden rounded-xl bg-neutral-900/60 p-4">
+              <img src="https://us.mozaracing.com/cdn/shop/files/MOZA_Yoke_base.jpg?v=1752721372&width=875" alt="MOZA AY210 Yoke Base" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="flex items-baseline justify-between mb-3">
+              <h3 class="font-bold text-base text-white">MOZA AY210 Yoke Base</h3>
+              <span class="font-bold text-sm text-gray-200">$699.00 USD</span>
+            </div>
+          </div>
+          <div class="pt-3 border-t border-neutral-800/80 text-[11px] text-gray-400">
+            <p>21 Nm Direct Drive Force Feedback flight yoke base with dual-axis travel.</p>
+          </div>
+        </div>
+
+        <!-- Flight 2: MOZA AB6 Base -->
+        <div class="bg-neutral-950 rounded-2xl border border-neutral-800 overflow-hidden flex flex-col justify-between group hover:border-[#6bc2fd]/50 transition-all p-5">
+          <div>
+            <div class="relative aspect-square flex items-center justify-center mb-4 overflow-hidden rounded-xl bg-neutral-900/60 p-4">
+              <img src="https://us.mozaracing.com/cdn/shop/files/MOZA_Airbus_MA3F_Sidestick_homebanner_pc.png?v=1792663617&width=1000" alt="MOZA AB6 Base" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="flex items-baseline justify-between mb-3">
+              <h3 class="font-bold text-base text-white">MOZA AB6 Base</h3>
+              <span class="font-bold text-sm text-gray-200">$499.00 USD</span>
+            </div>
+          </div>
+          <div class="pt-3 border-t border-neutral-800/80 text-[11px] text-gray-400">
+            <p>Active brushless force feedback base engineered for precision flight stick control.</p>
+          </div>
+        </div>
+
+        <!-- Flight 3: MA3F Sidestick -->
+        <div class="bg-neutral-950 rounded-2xl border border-neutral-800 overflow-hidden flex flex-col justify-between group hover:border-[#6bc2fd]/50 transition-all p-5">
+          <div>
+            <div class="relative aspect-square flex items-center justify-center mb-4 overflow-hidden rounded-xl bg-neutral-900/60 p-4">
+              <img src="https://us.mozaracing.com/cdn/shop/files/MOZA_Airbus_MA3F_Sidestick_homebanner_pc.png?v=1792663617&width=1000" alt="MOZA Airbus MA3F Sidestick" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="flex items-baseline justify-between mb-3">
+              <h3 class="font-bold text-base text-white">MA3F Airbus Sidestick</h3>
+              <span class="font-bold text-sm text-gray-200">$349.00 USD</span>
+            </div>
+          </div>
+          <div class="pt-3 border-t border-neutral-800/80 text-[11px] text-gray-400">
+            <p>Officially licensed commercial aviation replica with dual tactile switches.</p>
+          </div>
+        </div>
+
+        <!-- Flight 4: HMA150 Motion Actuator -->
+        <div class="bg-neutral-950 rounded-2xl border border-neutral-800 overflow-hidden flex flex-col justify-between group hover:border-[#6bc2fd]/50 transition-all p-5">
+          <div>
+            <div class="relative aspect-square flex items-center justify-center mb-4 overflow-hidden rounded-xl bg-neutral-900/60 p-4">
+              <img src="https://us.mozaracing.com/cdn/shop/files/HMA150-PC.png?v=1785245667&width=1000" alt="MOZA HMA150 Actuator" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="flex items-baseline justify-between mb-3">
+              <h3 class="font-bold text-base text-white">HMA150 Motion Actuator</h3>
+              <span class="font-bold text-sm text-gray-200">$899.00 USD</span>
+            </div>
+          </div>
+          <div class="pt-3 border-t border-neutral-800/80 text-[11px] text-gray-400">
+            <p>150mm rapid linear stroke motion actuator for 2DOF to 6DOF sim cockpits.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 6. MOZA EVENTS (GLOBAL TOURNAMENTS & CHAMPIONSHIPS) -->
+  <!-- ========================================================================= -->
+  <section class="bg-black text-white py-14 lg:py-20 border-t border-neutral-900">
+    <div class="max-w-[1780px] mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+        <div>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white mb-2">MOZA Events</h2>
+          <p class="text-xs sm:text-sm text-gray-400">Join our worldwide championships, esports tournaments, and exhibitions.</p>
+        </div>
+        <div>
+          <a href="https://mozaracing.com/blogs/moza-events" target="_blank" rel="noopener noreferrer" class="btn-moza-secondary text-xs uppercase tracking-wider px-5 py-2.5 rounded-full inline-flex items-center gap-2">
+            <span>Find Out More</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Event 1: FIA F4 Esports -->
+        <div class="group rounded-2xl overflow-hidden bg-neutral-900 border border-neutral-800 transition-all hover:border-[#C9AF89]/50">
+          <div class="relative aspect-[16/10] overflow-hidden">
+            <img src="https://us.mozaracing.com/cdn/shop/files/FIA-F4.jpg?v=1783060004&width=1200" alt="FIA F4 Global Esports" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+          </div>
+          <div class="p-6">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-[#C9AF89] mb-1 block">Global Championship</span>
+            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-[#C9AF89] transition-colors">
+              MOZA Racing Returns to FIA F4 Global Esports Championship
+            </h3>
+            <p class="text-xs text-gray-400 leading-relaxed mb-4">
+              Partnering with the FIA to deliver professional sim hardware to junior single-seater talents across the globe.
+            </p>
+            <span class="text-xs font-semibold text-white/80 group-hover:text-[#C9AF89] inline-flex items-center gap-1">
+              Read Story &rarr;
+            </span>
+          </div>
+        </div>
+
+        <!-- Event 2: DMGP Giveaway -->
+        <div class="group rounded-2xl overflow-hidden bg-neutral-900 border border-neutral-800 transition-all hover:border-[#C9AF89]/50">
+          <div class="relative aspect-[16/10] overflow-hidden">
+            <img src="https://us.mozaracing.com/cdn/shop/files/dm-event-banner-new.png?v=1782441705&width=1200" alt="MOZA DMGP Giveaway" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+          </div>
+          <div class="p-6">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-[#C9AF89] mb-1 block">Community Event</span>
+            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-[#C9AF89] transition-colors">
+              MOZA DMGP Giveaway &amp; Drift Challenge
+            </h3>
+            <p class="text-xs text-gray-400 leading-relaxed mb-4">
+              Enter the annual Drift Masters community giveaway to win full direct drive rigs and exclusive event passes.
+            </p>
+            <span class="text-xs font-semibold text-white/80 group-hover:text-[#C9AF89] inline-flex items-center gap-1">
+              Enter Contest &rarr;
+            </span>
+          </div>
+        </div>
+
+        <!-- Event 3: Gridlife Sim Experience -->
+        <div class="group rounded-2xl overflow-hidden bg-neutral-900 border border-neutral-800 transition-all hover:border-[#C9AF89]/50">
+          <div class="relative aspect-[16/10] overflow-hidden">
+            <img src="https://us.mozaracing.com/cdn/shop/files/Gridlife_-_Event.jpg?v=1777517683&width=1200" alt="Gridlife Event" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+          </div>
+          <div class="p-6">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-[#C9AF89] mb-1 block">Live Festival</span>
+            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-[#C9AF89] transition-colors">
+              GRIDLIFE Festival Sim Racing Arena
+            </h3>
+            <p class="text-xs text-gray-400 leading-relaxed mb-4">
+              Experience the MOZA motion simulators live in the paddock alongside real-world time attack and drift competitions.
+            </p>
+            <span class="text-xs font-semibold text-white/80 group-hover:text-[#C9AF89] inline-flex items-center gap-1">
+              View Schedule &rarr;
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 7. MOZA NEWS (LATEST ANNOUNCEMENTS & RELEASES) -->
+  <!-- ========================================================================= -->
+  <section class="bg-black text-white py-14 lg:py-20 border-t border-neutral-900">
+    <div class="max-w-[1780px] mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+        <div>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white mb-2">MOZA News</h2>
+          <p class="text-xs sm:text-sm text-gray-400">Discover new product launches, firmware innovations, and partner announcements.</p>
+        </div>
+        <div>
+          <a href="https://mozaracing.com/blogs/news" target="_blank" rel="noopener noreferrer" class="btn-moza-secondary text-xs uppercase tracking-wider px-5 py-2.5 rounded-full inline-flex items-center gap-2">
+            <span>View All</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- News 1: Sim Gaming Expo 2026 -->
+        <article class="group rounded-2xl overflow-hidden bg-neutral-950 border border-neutral-800 flex flex-col justify-between hover:border-[#C9AF89]/50 transition-all">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden bg-neutral-900">
+              <img src="https://us.mozaracing.com/cdn/shop/articles/news-sge.png?v=1790067864&width=800" alt="MOZA at Sim Gaming Expo 2026" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-5">
+              <div class="flex items-center justify-between text-[11px] text-gray-400 mb-2">
+                <span class="text-[#C9AF89] font-semibold uppercase tracking-wider">Events</span>
+                <time datetime="2026-10-15">October 2026</time>
+              </div>
+              <h3 class="font-bold text-sm text-white group-hover:text-[#C9AF89] transition-colors line-clamp-2 mb-2">
+                MOZA Racing to Showcase Sim Racing, Flight Simulation and Motion Technology at Sim Gaming Expo 2026
+              </h3>
+              <p class="text-xs text-gray-400 line-clamp-3 leading-relaxed">
+                Experience next-generation direct drive wheelbases, mBooster active pedals, and the complete aviation cockpit lineup live.
+              </p>
+            </div>
+          </div>
+          <div class="p-5 pt-0">
+            <span class="text-xs font-semibold text-white/80 group-hover:text-[#C9AF89] inline-flex items-center gap-1 transition-colors">
+              Read Story &rarr;
+            </span>
+          </div>
+        </article>
+
+        <!-- News 2: Tokyo Game Show PS5 Licensed Wheels -->
+        <article class="group rounded-2xl overflow-hidden bg-neutral-950 border border-neutral-800 flex flex-col justify-between hover:border-[#C9AF89]/50 transition-all">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden bg-neutral-900">
+              <img src="https://us.mozaracing.com/cdn/shop/articles/TGS-PS-16-9.png?v=1790067864&width=800" alt="MOZA PS5 Licensed Wheels" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-5">
+              <div class="flex items-center justify-between text-[11px] text-gray-400 mb-2">
+                <span class="text-[#C9AF89] font-semibold uppercase tracking-wider">Product News</span>
+                <time datetime="2026-09-26">September 2026</time>
+              </div>
+              <h3 class="font-bold text-sm text-white group-hover:text-[#C9AF89] transition-colors line-clamp-2 mb-2">
+                MOZA Racing Debuts Its First Officially Licensed Racing Wheels for PlayStation®5 Consoles at Tokyo Game Show
+              </h3>
+              <p class="text-xs text-gray-400 line-clamp-3 leading-relaxed">
+                Plug-and-play direct drive immersion for Gran Turismo 7 and console racers worldwide, featuring quick release modularity.
+              </p>
+            </div>
+          </div>
+          <div class="p-5 pt-0">
+            <span class="text-xs font-semibold text-white/80 group-hover:text-[#C9AF89] inline-flex items-center gap-1 transition-colors">
+              Read Story &rarr;
+            </span>
+          </div>
+        </article>
+
+        <!-- News 3: Flight MSFS Air Races -->
+        <article class="group rounded-2xl overflow-hidden bg-neutral-950 border border-neutral-800 flex flex-col justify-between hover:border-[#6bc2fd]/50 transition-all">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden bg-neutral-900">
+              <img src="https://us.mozaracing.com/cdn/shop/articles/260914-news-1_1bd96994-000f-4ac2-83cd-2002f09ea0fd.png?v=1789432457&width=800" alt="MOZA Flight at Air Races" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-5">
+              <div class="flex items-center justify-between text-[11px] text-gray-400 mb-2">
+                <span class="text-[#6bc2fd] font-semibold uppercase tracking-wider">Flight Sim</span>
+                <time datetime="2026-09-14">September 2026</time>
+              </div>
+              <h3 class="font-bold text-sm text-white group-hover:text-[#6bc2fd] transition-colors line-clamp-2 mb-2">
+                MOZA Flight Brings Force Feedback Flight Controls to Microsoft Flight Simulator at the 2026 Air Races
+              </h3>
+              <p class="text-xs text-gray-400 line-clamp-3 leading-relaxed">
+                Active aerodynamic feedback modeling simulates true airspeed authority, turbulence, and stall vibrations for aviators.
+              </p>
+            </div>
+          </div>
+          <div class="p-5 pt-0">
+            <span class="text-xs font-semibold text-white/80 group-hover:text-[#6bc2fd] inline-flex items-center gap-1 transition-colors">
+              Read Story &rarr;
+            </span>
+          </div>
+        </article>
+
+        <!-- News 4: FFB-Bridge for macOS & Linux -->
+        <article class="group rounded-2xl overflow-hidden bg-neutral-950 border border-neutral-800 flex flex-col justify-between hover:border-[#C9AF89]/50 transition-all">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden bg-neutral-900">
+              <img src="https://us.mozaracing.com/cdn/shop/articles/MOZA_FFB-Bridge_Bring_Flight_FFB_to_macOS_and_Linux-2.png?v=1788250667&width=800" alt="MOZA FFB-Bridge Linux macOS" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-5">
+              <div class="flex items-center justify-between text-[11px] text-gray-400 mb-2">
+                <span class="text-[#C9AF89] font-semibold uppercase tracking-wider">Ecosystem</span>
+                <time datetime="2026-08-28">August 2026</time>
+              </div>
+              <h3 class="font-bold text-sm text-white group-hover:text-[#C9AF89] transition-colors line-clamp-2 mb-2">
+                MOZA Partners with FFB-Bridge to Enable Force Feedback Support on macOS and Linux Platforms
+              </h3>
+              <p class="text-xs text-gray-400 line-clamp-3 leading-relaxed">
+                Open telemetry standard integration ensures zero latency direct drive steering and flight stick response on Unix platforms.
+              </p>
+            </div>
+          </div>
+          <div class="p-5 pt-0">
+            <span class="text-xs font-semibold text-white/80 group-hover:text-[#C9AF89] inline-flex items-center gap-1 transition-colors">
+              Read Story &rarr;
+            </span>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 8. FORCE FEEDBACK COMPATIBILITY DIRECTORY -->
+  <!-- ========================================================================= -->
+  <section id="compatibility" class="bg-black text-white py-14 lg:py-20 border-t border-neutral-900">
+    <div class="max-w-[1780px] mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-10">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white mb-2">
+          MOZA Racing Force Feedback Compatibility List
+        </h2>
+        <p class="text-xs sm:text-sm text-gray-400">Plug &amp; play telemetry and FFB support across top PC simulators.</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 bg-neutral-950 p-6 sm:p-8 rounded-2xl border border-neutral-800 text-xs text-gray-300">
+        <div class="space-y-2">
+          <p class="hover:text-white transition-colors">Assetto Corsa</p>
+          <p class="hover:text-white transition-colors">Assetto Corsa Competizione</p>
+          <p class="hover:text-white transition-colors">Assetto Corsa EVO</p>
+          <p class="hover:text-white transition-colors">Automobilista 2</p>
+          <p class="hover:text-white transition-colors">BeamNG.drive</p>
+          <p class="hover:text-white transition-colors">CarX Drift Racing Online</p>
+          <p class="hover:text-white transition-colors">Dirt Rally 2.0</p>
+          <p class="hover:text-white transition-colors">EA SPORTS WRC</p>
+        </div>
+        <div class="space-y-2">
+          <p class="hover:text-white transition-colors">iRacing</p>
+          <p class="hover:text-white transition-colors">Forza Motorsport</p>
+          <p class="hover:text-white transition-colors">Forza Horizon 5</p>
+          <p class="hover:text-white transition-colors">F1 24 &amp; F1 25</p>
+          <p class="hover:text-white transition-colors">American Truck Simulator</p>
+          <p class="hover:text-white transition-colors">Euro Truck Simulator 2</p>
+          <p class="hover:text-white transition-colors">Farming Simulator 25</p>
+          <p class="hover:text-white transition-colors">JDM: Rise of the Scorpion</p>
+        </div>
+        <div class="space-y-2">
+          <p class="hover:text-white transition-colors">Le Mans Ultimate</p>
+          <p class="hover:text-white transition-colors">rFactor 2</p>
+          <p class="hover:text-white transition-colors">RENNSPORT</p>
+          <p class="hover:text-white transition-colors">RaceRoom Racing Experience</p>
+          <p class="hover:text-white transition-colors">KartKraft</p>
+          <p class="hover:text-white transition-colors">Project CARS 2</p>
+          <p class="hover:text-white transition-colors">SnowRunner</p>
+          <p class="hover:text-white transition-colors">Wreckfest</p>
+        </div>
+        <div class="space-y-2">
+          <p class="hover:text-white transition-colors">Microsoft Flight Simulator 2024</p>
+          <p class="hover:text-white transition-colors">X-Plane 12</p>
+          <p class="hover:text-white transition-colors">DCS World</p>
+          <p class="hover:text-white transition-colors">Prepar3D</p>
+          <p class="hover:text-white transition-colors">IL-2 Sturmovik</p>
+          <p class="hover:text-white transition-colors">Taxi Life: City Driving</p>
+          <p class="hover:text-white transition-colors">Test Drive Unlimited Solar Crown</p>
+          <p class="hover:text-white transition-colors">WRC Generations</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 9. OFFICIAL FOOTER WITH NEWSLETTER, PAYMENT ICONS & DIRECTORY (EXACT 1:1) -->
+  <!-- ========================================================================= -->
+  <footer id="footer" class="bg-black text-white pt-16 pb-12 border-t border-neutral-900">
+    <div class="max-w-[1780px] mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Top Grid: 4 Columns -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-14">
+        
+        <!-- Col 1: PRODUCT -->
+        <div>
+          <h4 class="text-sm font-bold uppercase tracking-wider text-white mb-4">PRODUCT</h4>
+          <ul class="space-y-2.5 text-xs text-gray-400">
+            <li><a href="#mustang-gtd-showcase" class="hover:text-[#C9AF89] transition-colors font-semibold text-[#C9AF89]">Ford Mustang GTD Wheel &rarr;</a></li>
+            <li><a href="cs-pro-wheel.html" class="hover:text-[#C9AF89] transition-colors font-semibold text-gray-200">MOZA CS Pro Wheel &rarr;</a></li>
+            <li><a href="r21-ultra.html" class="hover:text-[#C9AF89] transition-colors font-semibold text-white">MOZA R21 Ultra Base &rarr;</a></li>
+            <li><a href="r16-ultra.html" class="hover:text-[#C9AF89] transition-colors">MOZA R16 Ultra Base</a></li>
+            <li><a href="r12-wheelbase.html" class="hover:text-[#C9AF89] transition-colors">MOZA R12 V2 Base</a></li>
+            <li><a href="crp2-pedals.html" class="hover:text-[#C9AF89] transition-colors">CRP2 Load Cell Pedals</a></li>
+            <li><a href="mbooster-active-pedal.html" class="hover:text-[#C9AF89] transition-colors">mBooster Active Pedals</a></li>
+            <li><a href="#explore" class="hover:text-[#C9AF89] transition-colors">Flight Simulation Gear</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 2: SUPPORT -->
+        <div>
+          <h4 class="text-sm font-bold uppercase tracking-wider text-white mb-4">SUPPORT</h4>
+          <ul class="space-y-2.5 text-xs text-gray-400">
+            <li><a href="https://support.mozaracing.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#C9AF89] transition-colors">Knowledge Base</a></li>
+            <li><a href="javascript:void(0)" class="hover:text-[#C9AF89] transition-colors">Shipping &amp; Delivery</a></li>
+            <li><a href="javascript:void(0)" class="hover:text-[#C9AF89] transition-colors">2-Year Official Warranty</a></li>
+            <li><a href="javascript:void(0)" class="hover:text-[#C9AF89] transition-colors">Return &amp; Refund Policy</a></li>
+            <li><a href="javascript:void(0)" class="hover:text-[#C9AF89] transition-colors">Terms &amp; Conditions</a></li>
+            <li><a href="javascript:void(0)" class="hover:text-[#C9AF89] transition-colors">Privacy Policy</a></li>
+            <li><a href="javascript:void(0)" class="hover:text-[#C9AF89] transition-colors">MOZA SDK Portal</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: EXPLORE -->
+        <div>
+          <h4 class="text-sm font-bold uppercase tracking-wider text-white mb-4">EXPLORE</h4>
+          <ul class="space-y-2.5 text-xs text-gray-400">
+            <li><a href="javascript:void(0)" class="hover:text-[#C9AF89] transition-colors">Affiliate Program</a></li>
+            <li><a href="javascript:void(0)" class="hover:text-[#C9AF89] transition-colors">MOZA Creator Hub</a></li>
+            <li><a href="javascript:void(0)" class="hover:text-[#C9AF89] transition-colors">MOZA Moments</a></li>
+            <li><a href="javascript:void(0)" class="hover:text-[#C9AF89] transition-colors">MOZA Elite Club</a></li>
+            <li><a href="javascript:void(0)" class="hover:text-[#C9AF89] transition-colors">Experience Centers</a></li>
+            <li><a href="javascript:void(0)" class="hover:text-[#C9AF89] transition-colors">Where to Buy</a></li>
+            <li><a href="javascript:void(0)" class="hover:text-[#C9AF89] transition-colors">Customer Reviews</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4 & 5: NEWSLETTER & SOCIALS (Span 2) -->
+        <div class="lg:col-span-2 space-y-6">
+          <div>
+            <h4 class="text-sm font-bold uppercase tracking-wider text-white mb-3">NEWSLETTER</h4>
+            <p class="text-xs text-gray-400 mb-4 leading-relaxed">
+              Stay up to date with our latest product releases, receive exclusive sim gear deals, and firmware upgrades.
+            </p>
+            <form onsubmit="handleNewsletter(event)" class="relative max-w-md">
+              <input type="email" required placeholder="Enter your email" class="w-full bg-neutral-900 border border-neutral-700 rounded-full px-5 py-3 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-[#C9AF89] pr-12 transition-colors">
+              <button type="submit" class="absolute right-1.5 top-1.5 w-9 h-9 rounded-full bg-[#C9AF89] text-black hover:bg-white flex items-center justify-center transition-colors" title="Subscribe">
+                <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2 8h12M14 8L9.33333 3.3335M14 8L9.33333 12.6668"/>
+                </svg>
+              </button>
+            </form>
+          </div>
+
+          <!-- Social media icons in footer -->
+          <div>
+            <span class="text-xs font-semibold text-gray-400 block mb-3">Follow MOZA Racing:</span>
+            <div class="flex items-center space-x-4">
+              <a href="https://www.facebook.com/MOZARacing" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#C9AF89] transition-colors">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M9.03153 23L9 13H5V9H9V6.5C9 2.7886 11.2983 1 14.6091 1C16.1951 1 17.5581 1.11807 17.9553 1.17085V5.04948L15.6591 5.05052C13.8584 5.05052 13.5098 5.90614 13.5098 7.16171V9H18.75L16.75 13H13.5098V23H9.03153Z"/></svg>
+              </a>
+              <a href="https://twitter.com/moza_racing" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#C9AF89] transition-colors">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M13.8984 10.4679L21.3339 2H19.5687L13.1074 9.35221L7.95337 2H2L9.80183 13.1157L2 22H3.7652L10.5845 14.2315L16.03 22H21.9833M4.398 3.29892H7.10408L19.5687 20.7594H16.8626"/></svg>
+              </a>
+              <a href="https://www.instagram.com/moza_racing_official/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#C9AF89] transition-colors">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.98C14.94 2.98 15.28 2.99 16.44 3.04C17.14 3.04 17.83 3.18 18.48 3.42C18.96 3.6 19.39 3.88 19.75 4.24C20.12 4.59 20.4 5.03 20.57 5.51C20.81 6.16 20.94 6.85 20.95 7.55C21 8.71 21.01 9.06 21.01 12C21.01 14.94 21 15.28 20.95 16.44C20.95 17.14 20.81 17.83 20.57 18.48C20.39 18.95 20.11 19.39 19.75 19.75C19.39 20.11 18.96 20.39 18.48 20.57C17.83 20.81 17.14 20.94 16.44 20.95C15.28 21 14.93 21.01 12 21.01C9.07 21.01 8.72 21 7.55 20.95C6.85 20.95 6.16 20.81 5.51 20.57C5.03 20.39 4.6 20.11 4.24 19.75C3.87 19.4 3.59 18.96 3.42 18.48C3.18 17.83 3.05 17.14 3.04 16.44C2.99 15.28 2.98 14.93 2.98 12C2.98 9.07 2.99 8.72 3.04 7.55C3.04 6.85 3.18 6.16 3.42 5.51C3.6 5.03 3.88 4.6 4.24 4.24C4.59 3.87 5.03 3.59 5.51 3.42C6.16 3.18 6.85 3.05 7.55 3.04C8.71 2.99 9.06 2.98 12 2.98ZM12 1C9.01 1 8.64 1.01 7.47 1.07C6.56 1.09 5.65 1.26 4.8 1.58C4.07 1.86 3.4 2.3 2.85 2.85C2.3 3.41 1.86 4.07 1.58 4.8C1.26 5.65 1.09 6.56 1.07 7.47C1.02 8.64 1 9.01 1 12C1 14.99 1.01 15.36 1.07 16.53C1.09 17.44 1.26 18.35 1.58 19.2C1.86 19.93 2.3 20.6 2.85 21.15C3.41 21.7 4.07 22.14 4.8 22.42C5.65 22.74 6.56 22.91 7.47 22.93C8.64 22.98 9.01 23 12 23C14.99 23 15.36 22.99 16.53 22.93C17.44 22.91 18.35 22.74 19.2 22.42C19.93 22.14 20.6 21.7 21.15 21.15C21.7 20.59 22.14 19.93 22.42 19.2C22.74 18.35 22.91 17.44 22.93 16.53C22.98 15.36 23 14.99 23 12C23 9.01 22.99 8.64 22.93 7.47C22.91 6.56 22.74 5.65 22.42 4.8C22.14 4.07 21.7 3.4 21.15 2.85C20.59 2.3 19.93 1.86 19.2 1.58C18.35 1.26 17.44 1.09 16.53 1.07C15.36 1.02 14.99 1 12 1ZM12 6.35C10.88 6.35 9.79 6.68 8.86 7.3C7.93 7.92 7.21 8.8 6.78 9.84C6.35 10.87 6.24 12.01 6.46 13.1C6.68 14.2 7.22 15.2 8.01 15.99C8.8 16.78 9.81 17.32 10.9 17.54C12 17.76 13.13 17.65 14.16 17.22C15.19 16.79 16.07 16.07 16.7 15.14C17.32 14.21 17.65 13.12 17.65 12C17.65 10.5 17.05 9.06 16 8.01C14.94 6.95 13.5 6.36 12.01 6.36L12 6.35Z"/></svg>
+              </a>
+              <a href="https://www.youtube.com/channel/UCxTnjtk5irS374y2u-0syxw" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#C9AF89] transition-colors">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M23.8 7.6C23.8 7.6 23.6 5.9 22.8 5.2C21.9 4.2 20.9 4.2 20.4 4.2C17 4 12 4 12 4C12 4 7 4 3.6 4.2C3.1 4.3 2.1 4.3 1.2 5.2C0.5 5.9 0.2 7.6 0.2 7.6C0.2 7.6 0 9.5 0 11.5V13.3C0 15.2 0.2 17.2 0.2 17.2C0.2 17.2 0.4 18.9 1.2 19.6C2.1 20.6 3.3 20.5 3.8 20.6C5.7 20.8 12 20.8 12 20.8C12 20.8 17 20.8 20.4 20.5C20.9 20.4 21.9 20.4 22.8 19.5C23.5 18.8 23.8 17.1 23.8 17.1C23.8 17.1 24 15.2 24 13.2V11.4C24 9.5 23.8 7.6 23.8 7.6ZM9.5 15.5V8.8L16 12.2L9.5 15.5Z"/></svg>
+              </a>
+              <a href="https://discord.com/invite/CCBgHxJAdX" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#C9AF89] transition-colors">
+                <svg class="w-5 h-5" viewBox="0 0 30 30" fill="currentColor"><path d="M25.12,6.946c-2.424-1.948-6.257-2.278-6.419-2.292c-0.256-0.022-0.499,0.123-0.604,0.357 c-0.004,0.008-0.218,0.629-0.425,1.228c2.817,0.493,4.731,1.587,4.833,1.647c0.478,0.278,0.638,0.891,0.359,1.368 C22.679,9.572,22.344,9.75,22,9.75c-0.171,0-0.343-0.043-0.501-0.135C21.471,9.598,18.663,8,15.002,8 C11.34,8,8.531,9.599,8.503,9.615C8.026,9.892,7.414,9.729,7.137,9.251C6.86,8.775,7.021,8.164,7.497,7.886 c0.102-0.06,2.023-1.158,4.848-1.65c-0.218-0.606-0.438-1.217-0.442-1.225c-0.105-0.235-0.348-0.383-0.604-0.357 c-0.162,0.013-3.995,0.343-6.451,2.318C3.564,8.158,1,15.092,1,21.087c0,0.106,0.027,0.209,0.08,0.301 c1.771,3.11,6.599,3.924,7.699,3.959c0.007,0.001,0.013,0.001,0.019,0.001c0.194,0,0.377-0.093,0.492-0.25l1.19-1.612 c-2.61-0.629-3.99-1.618-4.073-1.679c-0.444-0.327-0.54-0.953-0.213-1.398c0.326-0.443,0.95-0.541,1.394-0.216 C7.625,20.217,10.172,22,15,22c4.847,0,7.387-1.79,7.412-1.808c0.444-0.322,1.07-0.225,1.395,0.221 c0.324,0.444,0.23,1.066-0.212,1.392c-0.083,0.061-1.456,1.048-4.06,1.677l1.175,1.615c0.115,0.158,0.298,0.25,0.492,0.25 c0.007,0,0.013,0,0.019-0.001c1.101-0.035,5.929-0.849,7.699-3.959c0.053-0.092,0.08-0.195,0.08-0.301 C29,15.092,26.436,8.158,25.12,6.946z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar: Copyright, Language, Payment Methods -->
+      <div class="pt-8 border-t border-neutral-900 flex flex-col lg:flex-row items-center justify-between gap-6 text-xs text-gray-500">
+        <div>
+          &copy; 2026 MOZA Racing US. All rights reserved.
+        </div>
+
+        <!-- Payment Icons -->
+        <div class="flex flex-wrap items-center justify-center gap-2">
+          <span class="inline-flex items-center justify-center w-10 h-6 bg-white rounded border border-gray-300 shadow-xs text-[9px] font-bold text-gray-900">ACH</span>
+          <span class="inline-flex items-center justify-center w-10 h-6 bg-[#142FBD] rounded border border-blue-900 shadow-xs text-[9px] font-bold text-white italic">VISA</span>
+          <span class="inline-flex items-center justify-center w-10 h-6 bg-[#222222] rounded border border-gray-700 shadow-xs text-[9px] font-bold text-amber-500">MC</span>
+          <span class="inline-flex items-center justify-center w-10 h-6 bg-[#0071CE] rounded border border-blue-600 shadow-xs text-[9px] font-bold text-white">AMEX</span>
+          <span class="inline-flex items-center justify-center w-10 h-6 bg-white rounded border border-gray-300 shadow-xs text-[8px] font-bold text-[#F48120]">DISC</span>
+          <span class="inline-flex items-center justify-center w-10 h-6 bg-white rounded border border-gray-300 shadow-xs text-[9px] font-bold text-[#003087]">PayPal</span>
+          <span class="inline-flex items-center justify-center w-10 h-6 bg-black rounded border border-gray-700 shadow-xs text-[9px] font-bold text-white">Pay</span>
+          <span class="inline-flex items-center justify-center w-10 h-6 bg-white rounded border border-gray-300 shadow-xs text-[9px] font-bold text-gray-700">G Pay</span>
+          <span class="inline-flex items-center justify-center w-12 h-6 bg-[#5A31F4] rounded border border-purple-800 shadow-xs text-[9px] font-bold text-white">ShopPay</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- 10. INTERACTIVE DRAWERS & MODALS (MOBILE DRAWER, CART DRAWER, SEARCH) -->
+  <!-- ========================================================================= -->
+
+  <!-- A. Mobile Navigation Drawer -->
+  <div id="mobile-menu-drawer" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300 opacity-0">
+    <div onclick="closeMobileMenu()" class="absolute inset-0 bg-black/75 backdrop-blur-sm cursor-pointer"></div>
+    <div id="mobile-drawer-panel" class="absolute top-0 left-0 bottom-0 w-[85%] max-w-sm bg-[#111111] text-white flex flex-col justify-between p-6 transform -translate-x-full transition-transform duration-300 shadow-2xl overflow-y-auto">
+      <div>
+        <div class="flex items-center justify-between pb-6 border-b border-neutral-800 mb-6">
+          <img src="https://us.mozaracing.com/cdn/shop/files/MOZA_Racing_White.svg?v=1751278730&width=317" alt="MOZA Racing" class="h-6 w-auto">
+          <button onclick="closeMobileMenu()" class="text-gray-400 hover:text-white text-2xl font-light">&times;</button>
+        </div>
+
+        <nav class="space-y-4 text-base font-semibold tracking-wide uppercase">
+          <a href="#mustang-gtd-showcase" onclick="closeMobileMenu()" class="block py-2 text-[#C9AF89] font-bold pl-3 border-l-2 border-[#C9AF89]">Ford Mustang GTD Wheel &rarr;</a>
+          <a href="cs-pro-wheel.html" class="block py-2 text-[#CC0901] font-bold pl-3 border-l-2 border-[#CC0901]">MOZA CS Pro Wheel &rarr;</a>
+          <a href="#journey" onclick="closeMobileMenu()" class="block py-2 text-gray-200 hover:text-[#C9AF89]">Simulation Journey</a>
+          <a href="#explore" onclick="closeMobileMenu()" class="block py-2 text-gray-200 hover:text-[#C9AF89]">Explore Rigs</a>
+          <a href="r21-ultra.html" class="block py-2 text-[#C9AF89] font-bold">R21 Ultra Wheelbase &rarr;</a>
+          <a href="r16-ultra.html" class="block py-2 text-gray-200 hover:text-[#C9AF89]">R16 Ultra Wheelbase</a>
+          <a href="crp2-pedals.html" class="block py-2 text-gray-200 hover:text-[#C9AF89]">CRP2 Pedals</a>
+          <a href="#compatibility" onclick="closeMobileMenu()" class="block py-2 text-gray-200 hover:text-[#C9AF89]">Compatibility</a>
+          <a href="#footer" onclick="closeMobileMenu()" class="block py-2 text-gray-200 hover:text-[#C9AF89]">About Us</a>
+        </nav>
+      </div>
+
+      <div class="pt-6 border-t border-neutral-800 space-y-4">
+        <a href="#mustang-gtd-showcase" onclick="closeMobileMenu()" class="btn-shop-pill w-full flex items-center justify-center gap-2 py-3 rounded-full font-bold text-sm text-black">
+          <span>Shop Now</span>
+        </a>
+        <div class="flex items-center justify-between text-xs text-gray-400">
+          <span>Language: English</span>
+          <span>Region: United States (USD $)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- B. Cart Drawer -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300 opacity-0">
+    <div onclick="closeCartDrawer()" class="absolute inset-0 bg-black/75 backdrop-blur-sm cursor-pointer"></div>
+    <div id="cart-drawer-panel" class="absolute top-0 right-0 bottom-0 w-[90%] max-w-md bg-[#161616] text-white flex flex-col justify-between p-6 transform translate-x-full transition-transform duration-300 shadow-2xl">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-neutral-800 mb-4">
+          <h3 class="text-lg font-bold">Shopping Cart (<span id="cart-drawer-count">0</span>)</h3>
+          <button onclick="closeCartDrawer()" class="text-gray-400 hover:text-white text-2xl font-light">&times;</button>
+        </div>
+        <!-- Cart Items List -->
+        <div id="cart-items-container" class="space-y-4 max-h-[60vh] overflow-y-auto pr-1">
+          <div id="cart-empty-msg" class="py-12 text-center text-gray-400 text-sm">
+            <svg class="w-12 h-12 mx-auto mb-3 text-neutral-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            Your cart is currently empty.
+          </div>
+        </div>
+      </div>
+
+      <!-- Subtotal & Checkout -->
+      <div class="pt-4 border-t border-neutral-800">
+        <div class="flex items-center justify-between mb-3 text-sm">
+          <span class="text-gray-400">Estimated Total:</span>
+          <span id="cart-subtotal" class="font-bold text-lg text-white">$0.00 USD</span>
+        </div>
+        <p class="text-[11px] text-gray-400 mb-4">Taxes and shipping calculated at checkout.</p>
+        <button onclick="checkoutNow()" class="btn-moza-primary w-full py-3 rounded-full font-bold uppercase tracking-wider text-xs">
+          Proceed to Checkout
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- C. Search Modal -->
+  <div id="search-modal" class="fixed inset-0 z-50 hidden flex items-start justify-center pt-24 px-4 bg-black/85 backdrop-blur-md">
+    <div class="w-full max-w-2xl bg-[#1a1a1a] border border-neutral-700 rounded-2xl p-6 shadow-2xl">
+      <div class="flex items-center justify-between pb-4 border-b border-neutral-700">
+        <div class="flex items-center gap-3 w-full">
+          <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <input id="search-input" type="text" oninput="handleSearch(this.value)" placeholder="Search wheels, wheel bases, pedals..." class="w-full bg-transparent text-white placeholder-gray-500 focus:outline-none text-base">
+        </div>
+        <button onclick="closeSearchModal()" class="text-gray-400 hover:text-white text-2xl font-light">&times;</button>
+      </div>
+      <div id="search-results" class="pt-4 max-h-72 overflow-y-auto space-y-2 text-xs">
+        <p class="text-gray-400">Popular searches: <a href="#mustang-gtd-showcase" class="text-[#C9AF89] underline ml-1">Mustang GTD Wheel</a>, <a href="cs-pro-wheel.html" class="text-[#C9AF89] underline ml-1">CS Pro Wheel</a>, <a href="r16-ultra.html" class="text-[#C9AF89] underline ml-1">R16 Ultra</a>, <a href="crp2-pedals.html" class="text-[#C9AF89] underline ml-1">CRP2 Pedals</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT CONTROLLERS -->
+  <!-- ========================================================================= -->
+  <script>
+    // 1. Hero Carousel Controller
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.slide-dot');
+    let slideInterval = null;
+
+    function showSlide(index) {
+      if (index < 0) index = slides.length - 1;
+      if (index >= slides.length) index = 0;
+      currentSlide = index;
+
+      slides.forEach((slide, i) => {
+        if (i === currentSlide) {
+          slide.classList.remove('opacity-0', 'pointer-events-none', 'z-0');
+          slide.classList.add('opacity-100', 'z-10');
+        } else {
+          slide.classList.remove('opacity-100', 'z-10');
+          slide.classList.add('opacity-0', 'pointer-events-none', 'z-0');
+        }
+      });
+
+      dots.forEach((dot, i) => {
+        if (i === currentSlide) {
+          dot.classList.add('bg-[#C9AF89]', 'w-6');
+          dot.classList.remove('bg-white/40', 'w-2');
+        } else {
+          dot.classList.remove('bg-[#C9AF89]', 'w-6');
+          dot.classList.add('bg-white/40', 'w-2');
+        }
+      });
+    }
+
+    function nextSlide() {
+      showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      showSlide(currentSlide - 1);
+    }
+
+    function goToSlide(idx) {
+      showSlide(idx);
+      resetSlideTimer();
+    }
+
+    function resetSlideTimer() {
+      clearInterval(slideInterval);
+      slideInterval = setInterval(nextSlide, 5500);
+    }
+    resetSlideTimer();
+
+    // 2. Journey Panels Hover Video Controller
+    function playJourneyVideo(panel) {
+      const video = panel.querySelector('video');
+      if (video) {
+        panel.classList.add('is-video-active');
+        video.play().catch(() => {});
+      }
+    }
+
+    function pauseJourneyVideo(panel) {
+      const video = panel.querySelector('video');
+      if (video) {
+        panel.classList.remove('is-video-active');
+        video.pause();
+      }
+    }
+
+    // 3. Cart State & Methods
+    let cart = [];
+
+    function addToCart(title, price, image) {
+      const existing = cart.find(item => item.title === title);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ title, price, image, qty: 1 });
+      }
+      updateCartUI();
+      openCartDrawer();
+    }
+
+    function updateCartUI() {
+      const totalCount = cart.reduce((acc, item) => acc + item.qty, 0);
+      const totalPrice = cart.reduce((acc, item) => acc + item.price * item.qty, 0);
+
+      document.getElementById('cart-badge').innerText = totalCount;
+      document.getElementById('cart-drawer-count').innerText = totalCount;
+      document.getElementById('cart-subtotal').innerText = `$${totalPrice.toFixed(2)} USD`;
+
+      const container = document.getElementById('cart-items-container');
+      const emptyMsg = document.getElementById('cart-empty-msg');
+
+      if (cart.length === 0) {
+        emptyMsg.style.display = 'block';
+        container.innerHTML = '';
+        container.appendChild(emptyMsg);
+      } else {
+        emptyMsg.style.display = 'none';
+        container.innerHTML = cart.map((item, index) => `
+          <div class="flex items-center gap-3 p-3 bg-neutral-900 rounded-xl border border-neutral-800">
+            <img src="${item.image}" alt="${item.title}" class="w-14 h-14 object-contain rounded bg-neutral-950 p-1">
+            <div class="flex-1 min-w-0">
+              <h4 class="text-xs font-bold text-white truncate">${item.title}</h4>
+              <p class="text-xs font-bold text-[#C9AF89]">$${item.price.toFixed(2)} USD</p>
+              <div class="flex items-center gap-2 mt-1 text-xs text-gray-400">
+                <span>Qty: ${item.qty}</span>
+                <button onclick="removeFromCart(${index})" class="text-red-400 hover:text-red-300 text-[10px] underline ml-2">Remove</button>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartUI();
+    }
+
+    function checkoutNow() {
+      alert("Redirecting to official secure checkout flow for MOZA Racing US...");
+    }
+
+    // 4. Drawer & Modal Controls
+    function openMobileMenu() {
+      const drawer = document.getElementById('mobile-menu-drawer');
+      const panel = document.getElementById('mobile-drawer-panel');
+      drawer.classList.remove('pointer-events-none', 'opacity-0');
+      drawer.classList.add('opacity-100');
+      panel.classList.remove('-translate-x-full');
+      panel.classList.add('translate-x-0');
+    }
+
+    function closeMobileMenu() {
+      const drawer = document.getElementById('mobile-menu-drawer');
+      const panel = document.getElementById('mobile-drawer-panel');
+      drawer.classList.add('pointer-events-none', 'opacity-0');
+      drawer.classList.remove('opacity-100');
+      panel.classList.add('-translate-x-full');
+      panel.classList.remove('translate-x-0');
+    }
+
+    function openCartDrawer() {
+      const drawer = document.getElementById('cart-drawer');
+      const panel = document.getElementById('cart-drawer-panel');
+      drawer.classList.remove('pointer-events-none', 'opacity-0');
+      drawer.classList.add('opacity-100');
+      panel.classList.remove('translate-x-full');
+      panel.classList.add('translate-x-0');
+    }
+
+    function closeCartDrawer() {
+      const drawer = document.getElementById('cart-drawer');
+      const panel = document.getElementById('cart-drawer-panel');
+      drawer.classList.add('pointer-events-none', 'opacity-0');
+      drawer.classList.remove('opacity-100');
+      panel.classList.add('translate-x-full');
+      panel.classList.remove('translate-x-0');
+    }
+
+    function openSearchModal() {
+      document.getElementById('search-modal').classList.remove('hidden');
+      document.getElementById('search-input').focus();
+    }
+
+    function closeSearchModal() {
+      document.getElementById('search-modal').classList.add('hidden');
+    }
+
+    function openLoginModal() {
+      alert("MOZA Racing US: Customer Authentication Portal");
+    }
+
+    function handleNewsletter(e) {
+      e.preventDefault();
+      alert("Thank you for subscribing to MOZA Racing US updates!");
+      e.target.reset();
+    }
+
+    function handleSearch(query) {
+      const resultsDiv = document.getElementById('search-results');
+      if (!query.trim()) {
+        resultsDiv.innerHTML = '<p class="text-gray-400">Popular searches: <a href="r21-ultra.html" class="text-[#C9AF89] underline ml-1">R21 Ultra</a>, <a href="#mustang-gtd-showcase" class="text-[#C9AF89] underline ml-1">Mustang GTD Wheel</a>, <a href="cs-pro-wheel.html" class="text-[#C9AF89] underline ml-1">CS Pro Wheel</a>, <a href="r16-ultra.html" class="text-[#C9AF89] underline ml-1">R16 Ultra</a></p>';
+        return;
+      }
+      const q = query.toLowerCase();
+      const matches = [
+        { name: 'MOZA R21 Ultra Direct Drive Wheel Base', url: 'r21-ultra.html', price: '$489.99 USD (30% OFF)' },
+        { name: 'Ford Mustang GTD Sim Racing Wheel', url: '#mustang-gtd-showcase', price: '$279.00 USD' },
+        { name: 'MOZA CS Pro Wheel', url: 'cs-pro-wheel.html', price: '$199.99 USD (28% OFF)' },
+        { name: 'MOZA R16 Ultra Wheel Base', url: 'r16-ultra.html', price: '$569.00 USD' },
+        { name: 'MOZA R12 V2 Wheel Base', url: 'r12-wheelbase.html', price: '$499.00 USD' },
+        { name: 'MOZA CRP2 Load Cell Pedals', url: 'crp2-pedals.html', price: '$369.00 USD' },
+        { name: 'MOZA R5 Racing Bundle', url: '#explore', price: '$379.00 USD' },
+        { name: 'MOZA AY210 Yoke Base', url: '#explore', price: '$699.00 USD' }
+      ].filter(item => item.name.toLowerCase().includes(q));
+
+      if (matches.length > 0) {
+        resultsDiv.innerHTML = matches.map(m => `
+          <a href="${m.url}" class="flex items-center justify-between p-2 rounded hover:bg-neutral-800 transition-colors">
+            <span class="font-bold text-white">${m.name}</span>
+            <span class="text-[#C9AF89]">${m.price}</span>
+          </a>
+        `).join('');
+      } else {
+        resultsDiv.innerHTML = '<p class="text-gray-400">No products matching "' + query + '"</p>';
+      }
+    }
+
+    // Switch between Racing Simulator and Flight Simulator in MOZA Sim Gear Setups
+    function switchGearTab(tab) {
+      const racingPanel = document.getElementById('gear-panel-racing');
+      const flightPanel = document.getElementById('gear-panel-flight');
+      const racingBtn = document.getElementById('gear-tab-racing-btn');
+      const flightBtn = document.getElementById('gear-tab-flight-btn');
+
+      if (!racingPanel || !flightPanel || !racingBtn || !flightBtn) return;
+
+      if (tab === 'racing') {
+        racingPanel.classList.remove('hidden');
+        flightPanel.classList.add('hidden');
+        racingBtn.className = 'px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#C9AF89] text-black transition-all shadow-sm';
+        flightBtn.className = 'px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-neutral-900 hover:bg-neutral-800 text-gray-300 hover:text-white transition-all border border-neutral-800';
+      } else {
+        racingPanel.classList.add('hidden');
+        flightPanel.classList.remove('hidden');
+        flightBtn.className = 'px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#6bc2fd] text-black transition-all shadow-sm';
+        racingBtn.className = 'px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-neutral-900 hover:bg-neutral-800 text-gray-300 hover:text-white transition-all border border-neutral-800';
+      }
+    }
+  </script>
+
+</body>
+</html>
